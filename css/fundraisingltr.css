@@ -448,7 +448,7 @@
   }
 }
 .fs-goal {
-  background: #bf993d;
+  background: #fff;
   padding: 0;
 }
 .fs-goal .fs-goal-text {
@@ -1862,6 +1862,10 @@
 .fs-bonus .fs-goal .fs-original-goal {
   position: relative;
 }
+
+.fs-original-goal {
+  color: #ef5422 !important;
+}
 .fs-bonus .fs-goal .fs-original-goal:before {
   content: " ";
   width: 104%;
@@ -2291,7 +2295,7 @@
   text-align: center;
   padding: 5px;
 }
-.donate-button  {
+.donate-button {
   cursor: pointer;
   text-transform: uppercase;
   padding: 20px 35px;
@@ -2300,7 +2304,7 @@
   color: #fff;
 }
 
-.donate-button-2  {
+.donate-button-2 {
   cursor: pointer;
   text-transform: uppercase;
   padding: 20px 35px;
@@ -3042,7 +3046,7 @@ body {
   font-size: 14px;
   float: right;
   background: 0 0;
-  color: #6B6A66;
+  color: #6b6a66;
 }
 .fs-full-donate-form
   .fs-donate-body
@@ -3224,7 +3228,7 @@ body {
 .dir_rtl .fs-wallboard .fs-countdown-widget {
   float: right;
 }
-.fs-wallboard{
+.fs-wallboard {
   padding: 0;
 }
 #fs-donate-form .fs-btn-donate {
@@ -3287,7 +3291,9 @@ body {
     display: inline;
   }
 
-  .donate-button, .donate-button-2, .donate-button-text {
+  .donate-button,
+  .donate-button-2,
+  .donate-button-text {
     width: 92%;
     padding: 10px 0 !important;
     font-size: 20px !important;
@@ -3299,5 +3305,89 @@ body {
     padding-top: 78px !important;
     padding-bottom: auto !important;
   }
+}
 
+#goalBtn {
+  padding: 30px 40px;
+  background-color: #ef5422;
+  font-size: 25px;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+
+#goalBtn > span {
+  font-weight: 100;
+}
+
+#goalrightSideText,
+#goalrightSideText2 {
+  color: #ef5422;
+  font-weight: 700;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+}
+#goalrightSideText > span,
+#goalrightSideText2 > span {
+  color: #6b6a66;
+  font-weight: 100;
+}
+
+#goalBtnDiv,
+#goalBtnDiv2 {
+  margin-left: 150px !important;
+  width: 100%;
+  background-color: #fab795;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+#goalBtnDiv2 {
+  display: none;
+}
+
+#goalBtnDiv,
+#goalBtnDiv2 > button:nth-child(2) {
+  margin-left: 30%;
+}
+
+@media (max-width: 992px) {
+  #goalBtnDiv {
+    margin-left: 0 !important;
+    display: none;
+  }
+  #goalBtnDiv2 {
+    margin-left: 0 !important;
+    display: flex;
+  }
+  #goalBtnDiv2 > button:nth-child(1) {
+    width: 100px !important;
+  }
+}
+
+#goalAreaMobileView {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#goalAreaMobileView > button:nth-child(1) {
+  background-color: transparent !important;
+  color: #ef5422;
+  font-size: 20px;
+  padding: 20px;
+}
+#goalAreaMobileView > button:nth-child(1) > span {
+  color: #6b6a66;
+  text-align: left;
+}
+#goalAreaMobileView > button:nth-child(2) {
+  font-size: 20px;
+  text-align: right;
+}
+
+
+body {
+  overflow-x: hidden !important;
 }
