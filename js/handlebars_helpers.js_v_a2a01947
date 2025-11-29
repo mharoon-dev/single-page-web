@@ -1,0 +1,11 @@
+﻿Handlebars.registerHelper('gt', function(a, b) {
+	return a > b;
+});
+
+Handlebars.registerHelper('iif', function(condition, result, alternative, options) {
+	if (condition) {
+		return new Handlebars.SafeString(result);
+	} else if (arguments.length >= 4 && !!alternative) {
+		return new Handlebars.SafeString(alternative);
+	}
+});

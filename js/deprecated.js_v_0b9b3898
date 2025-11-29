@@ -1,0 +1,874 @@
+﻿//used for the Highlighting
+var oldFootnoteTR = null;
+function doFootnote(footnoteNum)
+{
+	// HighLighting mechenism
+	if (Co.BrowserInfo.IsTouch)
+		return;
+	if (oldFootnoteTR != null)
+		oldFootnoteTR.className = oldFootnoteTR.className.replace(/\s?selected/gi, "");
+	oldFootnoteTR = document.getElementById("footnoteTR" + footnoteNum);
+	
+	if (history && history.pushState)
+		history.pushState({}, '', '#footnote' + footnoteNum);
+	Co.Tween.ScrollTo(oldFootnoteTR, null, null, function () {
+		if (!history || !history.pushState)
+			location.hash = '#footnote' + footnoteNum;
+	});
+	oldFootnoteTR.className += " selected";
+}
+function MM_swapImgRestore() { //v3.0
+	var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+	var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+		var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+		if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_findObj(n, d) { //v4.01
+	var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+	var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+	 if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_validateSearchForm(frm) { 
+	if (frm.searchword.value == "") {alert ("Please enter search criteria.");frm.searchword.focus();return false;}
+	if (frm.searchword.value==frm.searchword.title || frm.searchword.value == "Search") {alert ("Please enter search criteria.");frm.searchword.focus();return false;}
+	if (frm.searchword.value.length < 3) { alert ("Search term is too broad.");frm.searchword.focus();return false;}
+	return true;
+}
+
+function OpenWindow(imageId) {return OpenImage(imageId, true);}
+
+function OpenImage(imageid, print) { return Co.Tools.OpenImage(imageid, print); }
+function DailyThought_onclick(AID, PID)
+{
+	window.open("/magazine/tftd/TFTDFrame2.asp?AID=" + AID + "&PID=" + PID, "smallwin", "height=450,width=770,left=0,top=0,resizable=yes,scrollbars=1");
+}
+var Co_Options = { ArticleId: Co.ArticleId, SectionId: Co.SectionId, siteId: Co.SiteId, DomainName: Co.Request.ServerName, local_network: false, mosad_title2: Co.DbDomain };
+
+/* Still works - Share Layer */
+function displayShareLayer(obj)
+{
+	var shareContainer;
+	if (typeof (obj) != "undefined" && obj != null)
+	{
+		shareContainer = Co.Tools.getChildElementById("ShareItemsContainer", obj); 
+	}
+	else
+	{
+		shareContainer = document.getElementById('ShareItemsContainer');
+	}
+	if (!shareContainer)
+		return;
+	if (shareContainer.style.display != "none")
+		return;
+	var FadeTween = new Co.Tween(shareContainer, ["opacity"], Co.Tween.Easing.easeNone, [0], [100], 0.50, [""]);
+	shareContainer.style.display = "";
+	FadeTween.start();
+	Co.Tools.RunFunction(function ()
+	{
+		shareContainer.documentClickListener = Co.DomEvents.AddListener(document, "click", function (ev)
+		{
+			var obj = ev.srcElement || ev.target;
+			if (obj.nodeType == 3)
+				obj = obj.parentNode;
+			if (obj.id == "ShareItemsContainer")
+				return;
+			while ((obj = obj.parentNode))
+			{
+				if (obj.id == "ShareItemsContainer")
+					return;
+			}
+			hideShareLayer(shareContainer);
+		});
+	});
+}
+function hideShareLayer(shareContainer)
+{
+	if (typeof(shareContainer) == "undefined")
+		shareContainer = document.getElementById('ShareItemsContainer');
+	if (!shareContainer)
+		return;
+
+	var listener = shareContainer.documentClickListener;
+	if (listener)
+		Co.DomEvents.RemoveListener(document, "click", listener);
+	shareContainer.documentClickListener = null;
+	shareContainer.style.display = "none";
+}
+
+function shareURL(o) { var s = encodeURIComponent(Co.Request.ServerName); s = o.href.replace("DOMAIN_NAME", s); window.open(s); return false; }
+
+function init_submit_form(formName, color, cssPrefix) { };
+function submitForm(formName)
+{
+	if (!document.forms[formName].subscriptionid)
+	{
+		var input = document.createElement("input");
+		input.type = "hidden";
+		input.setAttribute("name", "subscriptionid");
+		input.setAttribute("value", document.forms[formName][formName + "_subid"].value);
+		document.forms[formName].appendChild(input);
+	}
+	if (!document.forms[formName].email)
+	{
+		var input = document.createElement("input");
+		input.type = "hidden";
+		input.setAttribute("name", "email");
+		input.setAttribute("value", document.forms[formName][formName + "_email"].value);
+		document.forms[formName].appendChild(input);
+	}
+	return submitHeaderSubscribe(document.forms[formName], document.getElementById(formName + '_subscribe_container'), document.getElementById(formName + '_subscribe_container'));
+}
+
+
+/* used for loading video in an article - should be discontinued */
+function FileNames() { this.kb300 = { text: "300" }; this.kb100 = { text: "100" }; this.kb56 = { text: "56" }; for (var obj in this) { this[obj].height = 0; this[obj].width = 0; this[obj].fileid = null; }; }
+var files = { autostart: 1, serverpath: '', CurrentPosition: "0", Media_Type: "Unknown", SaveLocation: false,
+	Windows_Media: { avail: false, FileNames: new FileNames(), name: "wm", FullName: "Windows Media Player", RealName: "Windows Media Player" },
+	Real: { avail: false, FileNames: new FileNames(), name: "real", FullName: "RealPlayer", RealName: "Real Player" },
+	Flash: { avail: false, FileNames: new FileNames(), name: "flash", FullName: "Flash", RealName: "Flash Player", Version: [7, 0, 0] }
+}
+
+function load_player()
+{
+	var file, mediaType;
+	if (files.Flash.avail)
+	{
+		file = files.Flash.FileNames.kb300 || files.Flash.FileNames.kb100 || files.Flash.FileNames.kb56;
+		mediaType = "flash";
+	}
+	var player = new Co.MediaPlayer(Co.MediaPlayer.Instances.Length, "deprecated");
+	player.ArticleId = files.aid;
+	player.FileId = file.fileid;
+	player.Width = file.width;
+	player.Height = file.height;
+	player.PlayerType = mediaType;
+	player.AutoStart = files.autostart;
+	player.FlashVars = files.Flash.FlashVars;
+	player.AllowFullScreen = true;
+	player.Load("ajax_player_div");
+}
+function get_player(instance)
+{
+	if (instance == "flash1")
+		instance = "deprecated";
+
+	var instanceObject = Co.MediaPlayer.FindInstance(instance);
+	if (instanceObject == null)
+		return null;
+	return instanceObject.GetObject();
+}
+
+/* Still works - Email Dialog - for the new site */
+var emailDialog;
+function showEmailLayer(sourceObject, loadedCallback, sendCallback, cancelCallback, properties)
+{
+	var dialog;
+	if (typeof (sourceObject) != "undefined")
+		dialog = sourceObject.Dialog;
+	var properties = properties || {};
+	properties = Object.Merge(properties,
+		{
+			Page: "/Dialogs/EmailAFriend.asp",
+			buttons: {
+				Cancel: cancelCallback || emailDialogOnCancelClick,
+				Send: sendCallback || emailDialogOnSendClick
+			}
+		});
+	var query = [];	
+	var availWidth = window.screen.availWidth || window.screen.width;
+	if (availWidth < 521) {
+		query.push('so=true');
+	} else {
+		properties.Width = 450;
+	}
+
+	if (!properties.id)
+		properties.id = Co.ArticleId;
+
+	query.push('id=' + escape(properties.id));
+
+	if (properties.http)
+		query.push('http=' + properties.http);
+	if (properties.comment)
+		query.push('comment=' + escape(properties.comment));
+	if (properties.site)
+		query.push('site=' + escape(properties.site));
+	if (properties.title2)
+		query.push('title2=' + escape(properties.title2));
+	if (query.length)
+		properties.Page += '?' + query.join('&');
+	if (availWidth < 521)
+	{
+		window.open(properties.Page);
+		return;
+	}
+	if (typeof (dialog) == 'undefined')
+	{
+		dialog = Co.Dialog.OpenWindow(properties);
+		if (typeof (emailDialogLoaded) == "function")
+		{
+			dialog.Events.AddEventListener("dialogLoaded", loadedCallback || emailDialogLoaded);
+		}
+		//emailDialog.Show();
+	}
+	else
+	{
+		//Co.Tools.getChildElementById("DialogLoadingText", dialog.ContentLoadingContainer).innerHTML = 'Loading...';
+		if (dialog.Buttons.style.display == 'none')
+			dialog.Buttons.style.display = '';
+		if (dialog.CloseButton.style.display == 'none')/* After a submit, this is hidden to allow EAF to generate a new form. */
+			dialog.CloseButton.style.display = '';
+		dialog.Show(properties);
+	}
+	if (typeof (sourceObject) != "undefined")
+		sourceObject.Dialog = dialog;
+	emailDialog = dialog;
+
+	dialog.Events.AddEventListener("dialogLoaded", function (args) {
+		var emailForm = args.target.ContentDocument.forms[0];
+		// CHABADORG-2626: Email a freind needs to work with recaptcha, and has two modes: where it's opened as a
+		// standalone page (eg, a popup), and as a dialog.
+		// It has a submit handler so that it works with recaptcha as a standalone page, but when it's opened as a
+		// dialog, the parent(right here) coordinates all validation (including recaptcha), so we disable the forms own
+		// handler to avoid conflicts.
+		emailForm.onsubmit = null;
+
+		// CHABADORG-2077: emailDialogOnSendClick takes care of submitting the form itself, but
+		// wasn't being triggered when recaptcha passed.
+		// To fix, the submit method which ends up being called when recaptcha calls
+		// calls emailDialogOnSendClick instead.		
+		emailForm.submit = function () {
+			emailDialogOnSendClick(null, emailDialog);
+		}
+	});
+
+	return emailDialog;
+}
+
+function emailDialogOnSendClick(button, dialogObj)
+{
+	var frm = dialogObj.ContentDocument.forms[0];
+	if (Co.Forms.Validation.Validate(frm))
+	{
+		dialogObj.Buttons.style.display = 'none';
+		//Co.Tools.getChildElementById("DialogLoadingText", dialogObj.ContentLoadingContainer).innerHTML = 'Sending...';
+		dialogObj.ContentLoadingContainer.style.display = '';
+		dialogObj.ContentContainer.style.display = 'none';
+		var args = new Co.Ajax.RequestObject('/Webservices/FormProcessor/EmailAFriend');
+		var comment = frm.comment.value.replace(/[\n\r]/gm, "<br>");
+		args.Callback = emailDialogOnSendClickResponse;
+		args.CallbackParameters = dialogObj;
+
+		var formData = new FormData(frm);
+		formData.set('comment', comment);
+		formData.set('title1', formData.get('title1') || dialogObj.Properties.title1);
+		formData.set('title2', formData.get('title2') || dialogObj.Properties.title2);
+		
+		args.Parameters = Object.fromEntries(formData);
+		args.Method = "POST";
+		Co.Ajax.Request(args);
+	}
+}
+
+function emailDialogOnSendClickResponse(responseObj, dialogObj)
+{
+	if (responseObj.status >= 200 && responseObj.status < 300)
+	{
+		var div = document.createElement('DIV');
+		div.id = 'thank_you_message';
+		div.innerHTML = '<div style="heeeight:337px;background-color:#F7F9FA;overflow:auto;"><div style="padding:20px;">' + responseObj.responseText + '</div></div>';
+		dialogObj.ContentContainer.appendChild(div);
+		//dialogObj.ContentContainer.innerHTML = '<div style="height:100%;background-color:#F7F9FA;overflow:auto;"><div style="padding:20px;">' + responseObj.responseText + '</div></div>';
+		dialogObj.IFrame.style.display = 'none';
+		dialogObj.Buttons.style.display = '';
+		dialogObj.CloseButton.style.display = 'none';//This is hidden so that the user will click the "close" button instead. That way a new form will pop-up allowing them to send to more people, if they so choose.
+		dialogObj.AppendButton('Close', emailDialogOnOkClick, "o", true);
+		dialogObj.ContentLoadingContainer.style.display = 'none';
+		dialogObj.ContentContainer.style.display = '';
+		if (div.clientHeight > dialogObj.ContentContainer.clientHeight)
+		{
+			dialogObj.ContentContainer.style.height = div.clientHeight + "px";
+		}
+	}
+	else
+	{
+		alert('' + responseObj.responseText);
+		dialogObj.ContentDocument.forms[0].Submitted = false;
+		dialogObj.ContentLoadingContainer.style.display = 'none';
+		dialogObj.ContentContainer.style.display = '';
+		dialogObj.Buttons.style.display = 'block';
+	}
+}
+
+function emailDialogOnCancelClick(button, dialogObj)
+{
+	dialogObj.Hide();
+}
+function emailDialogOnOkClick(button, dialogObj)
+{
+	dialogObj.Hide();
+	dialogObj.IFrame.style.display = '';
+	var element = Co.Tools.getChildElementById("thank_you_message", dialogObj.ContentContainer);
+	if (element != null)
+		dialogObj.ContentContainer.removeChild(element);
+	
+	// Prevent the buttons from being created before the popup is closed.
+	setTimeout(function () {
+		dialogObj.CreateButtons(true);
+	});
+}
+
+var IndexPage = { Sort: "featured", Subjects: [], PageSize: 20 };
+IndexPage.UpdateSort = function (newSort)
+{
+	if (newSort.toLowerCase() == "featured")
+	{
+		Co.Request.RemoveQueryStringParamater("sortcolumn");
+	}
+	else
+	{
+		Co.Request.MergeQueryParamaters({ "sortcolumn": newSort.toLowerCase() });
+	}
+	
+};
+IndexPage.UpdatePageSize = function (newPageSize)
+{
+	if (newPageSize > 500)
+		newPageSize = 500;
+	if (newPageSize <= 0)
+		newPageSize = 20;
+	this.PageSize = newPageSize;
+
+	Co.Anchor.Merge({ "PageSize": newPageSize });
+};
+IndexPage.UpdateFilter = function (obj) {
+	var selectedItems = '';
+	var frm = document.forms.ArticleIndexFilterOptions;
+	var relatedSubjects = frm.relatedSubjects;
+
+	if (relatedSubjects && relatedSubjects.length > 0)
+	{
+		if (obj == relatedSubjects[0])
+			this.Subjects = [];
+		else
+		{
+			if (obj.checked)
+				this.Subjects.push(obj.value);
+			else
+			{
+				for (var i = 0; i < this.Subjects.length; i++)
+				{
+					if (this.Subjects[i] == obj.value)
+					{
+						this.Subjects.splice(i, 1);
+						break;
+					}
+				}
+			}
+		}
+		relatedSubjects[0].checked = (this.Subjects.length == 0);
+	}
+	Co.Anchor.Merge({ "Topics": this.Subjects.join(',') });
+}
+IndexPage.Load = function () {
+	var filterOptions = {
+		Topics: this.Subjects.join(','),
+		SortColumn: this.Sort
+	};
+
+	Co.Paging.UpdateFilter(filterOptions);
+};
+function TrackClick(url, source, referer, action)
+{
+	dataLayer.push({ 'event': 'button1-click', 'conversionValue': 25 });
+
+	if (typeof(_gat) == "undefined")
+		return;
+
+	var trackers = _gat._getTrackers();
+	for (var i = 0; i < trackers.length; i++)
+		trackers[i]._trackEvent(action || 'Click', source, referer, 2, false);
+
+	(new Co.Ajax.RequestObject("/webservices/remoteCall/track", { Method: "POST", EnableCaching: true, Parameters: { url: url, "sc": source, "ref": referer} })).Request();
+};
+function setUpHeaderItems()
+{
+	if (document.forms.length == 0)
+		return;
+	if (window.IsDialog)
+		return;
+
+	if (Co.Request.ScriptName() == "/")
+		Co.Tools.Content.AppendClassName(document.body, 'home');
+
+	if (Co.Request.QueryString("showfeedback") == "true")
+		Co.Tween.ScrollTo('reader_comments_container');
+
+	var headerLayers = Co.Tools.GetElementsByClassName("top_bar_item.topBarLink layer-wrapper", "*", document.getElementById("HeaderWrapper"));
+	var layers = headerLayers.concat(Co.Tools.GetElementsByClassName("layer-wrapper", "*", document.getElementById("FooterContainer")));
+	for (var i = 0; i < layers.length; i++)
+	{
+		var layerEls = Co.Tools.GetElementsByClassName("topBarLayer layer-items", "*", layers[i]);
+		if (layerEls.length == 0)
+			continue;
+		layer = new Co.Layer(layerEls[0], layers[i]);
+	}
+	if (Co.BrowserInfo.IsMobileDevice())
+	{
+		layer = new Co.Layer("HeaderSignInContainer", "HeaderSignIn");
+		layer = new Co.Layer("ProfileOptionsContainer", "ProfileOptions");
+	}
+
+	var obj = document.getElementById('SearchContentContainerTopSearch_search');
+
+	Co.DomEvents.AddListener(obj, "focus", window.SearchHeader.OnFocus, [obj], window.SearchHeader);
+
+	if (Co.LoginStatus.toLowerCase() == "none")
+	{
+		var loginForm = document.forms.headerLogin;
+		if (loginForm == null || typeof (loginForm) == "undefined")
+			return;
+		var loginProcessor = loginForm.LoginProcessor = new Co.Login(loginForm);
+		loginProcessor.Events.AddEventListener("beforeSubmit", function (ev)
+		{
+			Co.PageControl.GetDefault().disableFragments(document.getElementById('HeaderSignInContainer'), Co.Translator.Translate('One moment please...'));
+		});
+		loginProcessor.Events.AddEventListener("actionResult", function (ev)
+		{
+			if (ev.result.Success)
+				return;
+
+			Co.PageControl.GetDefault().enableFragments();
+
+			var elm = document.getElementById("SignInAjaxLoader");
+			elm.style.display = "block";
+			elm.firstChild.innerHTML = ev.result.MessageTitle;
+		});
+		Co.Events.GlobalEvents.AddEventListener("loginComplete", function (ev)
+		{
+			document.getElementById('loginHeaderContainer').innerHTML = 'Hi <a href="/tools/login/default.asp">' + ev.result.FirstName + '</a> | <a href="/tools/login/default.asp?logout=true">' + Co.Translator.Translate('Logout') + '</a>';
+			Co.PageControl.GetDefault().enableFragments();
+		});
+	}
+};
+
+function submitHeaderSubscribe(frm, containerElm, responseElm, hideElm, className)
+{
+	if (Co.Forms.Validation.Validate(frm))
+	{
+		var subscribeIds = '';
+
+		if (typeof(hideElm) != 'undefined')
+		{
+			if (hideElm.style.visibility != 'hidden')
+			{
+				hideElm.style.visibility = 'hidden';
+			}
+		}
+		if (frm.subscriptionid.length)
+		{
+			for (var i = 0, items = frm.subscriptionid; i < items.length; i++)
+			{
+				if (items[i].checked)
+					subscribeIds += items[i].value + ',';
+			}
+		}
+		else
+		{
+			subscribeIds = frm.subscriptionid.value;
+		}
+
+		var args = new Co.Ajax.RequestObject('/webservices/FormProcessor/HeaderSubscribe');
+		args.Callback = responseHeaderSubscribe;
+
+		var formData = new FormData(frm);
+		formData.set('subscriptions', subscribeIds.Trim(','));
+		formData.set('email', (frm.email || frm.x_email).value)
+
+		args.Parameters = Object.fromEntries(formData);
+		
+		if (frm.fname || frm.x_first_name)
+			args.Parameters.fname = (frm.fname || frm.x_first_name).value;
+		if (frm.lname || frm.x_last_name)
+			args.Parameters.lname = (frm.lname || frm.x_last_name).value;
+
+		args.CallbackParameters = [frm, containerElm, responseElm, className, hideElm];
+
+		Co.PageControl.GetDefault().disableFragments(containerElm, Co.Translator.Translate('One moment please...'), '', 99999);
+		args.DisablePage = false;
+		args.Method = "POST";
+		Co.Ajax.Request(args);
+	}
+	return false;
+};
+function responseHeaderSubscribe(obj, frm, containerElm, responseElm, className, hideElm)
+{
+	Co.PageControl.GetDefault().enableFragments();
+	if (obj.status == 200)
+	{
+		containerElm.style.display = "none";
+		responseElm.style.display = "block";
+		responseElm.innerHTML = '<div style="text-align:center;vertical-align:middle;">' + Co.Translator.Translate("Thank you for subscribing.") + '</div>';
+		responseElm.className = (typeof(className) != 'undefined' && className != '' ? className : ' success arial_11 blue');
+	}
+	else
+	{
+		test = obj;
+		frm.Submitted = false;
+		alert(obj.responseText);
+
+		if (typeof (hideElm) != 'undefined') {
+			hideElm.style.visibility = "";
+		}
+	}
+};
+
+function OnSearchAutoSuggestSelect(ev)
+{
+	var rating;
+	var keyword;
+	if (ev.target.ActiveItem == null)
+	{
+		rating = '0';
+		keyword = '0';
+		//rating = ev.target.Suggestions[0].Rating;
+		//keyword = ev.target.Suggestions[0].keywordid;
+	}
+	else
+	{
+		rating = ev.target.ActiveItem.getAttribute('rating');
+		keyword = ev.target.ActiveItem.getAttribute('keywordid');
+	}
+
+	if (rating == '3' && keyword != '' && keyword != '0')
+	{
+		document.location.href = ev.target.ActiveItem.getAttribute('href');
+	}
+	else
+	{
+		if (typeof (ev.target.Form.onsubmit) == "function")
+		{
+			if (ev.target.Form.onsubmit.apply(ev.target.Form))
+				ev.target.Form.submit();
+		}
+		else
+			ev.target.Form.submit();
+	}
+	ev.target.CancelSubmit = true;
+}
+
+window.SearchHeader = {
+	ContainingNode: null,
+	Wrapper: null,
+	DocumentClickListener: null,
+	OnSuggestionsLoaded: function (ev)
+	{
+		//console.dir(ev.BestBets);
+		if (this.Wrapper === null)
+			this.Wrapper = Co.Tools.getChildElementById("co_absolute_wraper", this.ContainingNode);
+
+		if (this.Wrapper == null)
+			return;
+		if (ev.BestBets.length > 1)
+		{
+			this.Wrapper.className += " with_recommended";
+		}
+		else
+		{
+			this.Wrapper.className = this.Wrapper.className.replace(/\swith_recommended/gi, '');
+		}
+
+		var elms = Co.Tools.GetElementsByClassName("auto_suggest_items_container", "DIV", this.Container);
+
+		if (elms != null && elms.length > 0)
+			elms[0].style.height = (ev.target.Container.clientHeight - 15) + "px";
+	},
+	OnFocus: function (ev, obj)
+	{
+		var searchParentNode = obj.parentNode;
+		var partnerSiteId = Co.PartnerSiteId;
+		if (partnerSiteId != 0)
+		{
+			var layer = searchParentNode.nextSibling;
+			if (layer.nodeType == 3)
+				layer = layer.nextSibling;
+			if (layer != null)
+				layer.style.display = '';
+		}
+
+		if (this.ContainingNode === null)
+		{
+			if (obj.AutoSuggest && !obj.AutoSuggest.Events.HasListener("suggestionsLoaded"))
+			{
+				obj.AutoSuggest.Events.AddEventListener("suggestionsLoaded", this.OnSuggestionsLoaded, this);
+			}
+			while (searchParentNode != null)
+			{
+				if (searchParentNode.nodeType != 3)
+				{
+					if ((searchParentNode.className || "").indexOf("co_menu_item search") != -1)
+						break;
+				}
+				searchParentNode = searchParentNode.parentNode;
+			}
+
+			this.ContainingNode = searchParentNode;
+		}
+		searchParentNode = this.ContainingNode;
+
+		if (searchParentNode != null)
+		{
+			this.Toggle(searchParentNode, true);
+		}
+
+		if (this.DocumentClickListener == null)
+			this.DocumentClickListener = Co.DomEvents.AddListener(document, "click", this.DocumentClickHandler, [], this);
+	},
+	DocumentClickHandler: function (ev)
+	{
+		if (this.ContainingNode == null)
+			return;
+		var targetNode = ev.target || ev.srcElement;
+
+		if (!Co.Tools.IsChildOf(targetNode, this.ContainingNode))
+		{
+			this.Toggle(this.ContainingNode, false);
+			
+			Co.DomEvents.RemoveListener(document, 'click', this.DocumentClickListener);
+			this.DocumentClickListener = null;
+		}
+	},
+	Toggle: function (wrapperNode, active)
+	{
+		var container = wrapperNode.parentNode;
+		while (container != null && container.nodeName != "TABLE")
+			container = container.parentNode;
+
+		if (active !== true && active !== false)
+			active = !Co.Tools.Content.HasClassName(wrapperNode, "hover");
+		Co.Tools.Content.ToggleClassName(wrapperNode, "hover", active);
+		Co.Tools.Content.ToggleClassName(container, "active", active);
+
+		var end = wrapperNode.nextSibling;
+		if (end != null && end.nodeType != 1)
+			end = end.nextSibling;
+		if (end != null)
+			end.style.display = active ? "" : "none";
+	}
+};
+
+var socialNetworks = { Facebook: [], Google: [], Pinterest: [], WhatsApp: [] };
+var facebookNeeded = facebookNeeded || false;
+Co.DomEvents.AddListener(window, 'load', function ()
+{
+	Co.Tools.SetTimeout(loadSocial, 2000);
+});
+
+function loadSocial()
+{
+	if (typeof (facebookNeeded) != "undefined" && facebookNeeded && !window.FB && !Co.BrowserInfo.IsLessThanIE8)
+	{
+		var fb_app_id = window.fb_app_id;
+		if (typeof (fb_app_id) == "undefined") var fb_app_id = '';
+		window.fbAsyncInit = function ()
+		{
+			FB.init({ appId: fb_app_id, status: true, cookie: true, xfbml: true, channelUrl: Co.Request.ServerName + '/scripts/js/fb_channel.htm' });
+			//FB.XFBML.Like.prototype._getQS = FB.XFBML.Comments.prototype._getQS = function () { var targetObject = { api_key: FB._apiKey, locale: FB._locale, sdk: 'joey', session_key: FB._session && FB._session.session_key, ref: this.getAttribute('ref') }; FB.copy(targetObject, this.getUrlBits().params); return targetObject; };
+
+			if (typeof (fbAsyncInitCallback) == 'function')
+				fbAsyncInitCallback();
+		};
+		var e = document.createElement('script');
+		e.async = true;
+		e.defer = true;
+		e.src = document.location.protocol + '//connect.facebook.net/' + (Co.LanguageCode == "" ? "en_US" : "en_US" /*Co.LanguageCode.replace("-", "_")*/) + '/all.js';
+		document.body.appendChild(e);
+	}
+
+	if (Co.BrowserInfo.IsMobileDevice())
+		loadWhatsapp();
+
+	loadPinterest();
+
+	if ((Co.Request.QueryString("print") || "").toLowerCase() == "true")
+	{
+		Co.Tools.Print(window, null, (Co.Request.QueryString("green_printing") || "").toLowerCase() == "true")
+	}
+}
+function loadWhatsapp()
+{
+	var pageTitle = (document.getElementById('content_title') || document.getElementsByTagName("title")[0]).innerHTML.trim();
+	var url = Co.Request.ServerName + Co.Request.ScriptName() + Co.Request.QueryString();
+	if(Co.Request.QueryString().length > 0)
+	{
+		switch(Co.Request.QueryString()[0])
+		{
+			case '?':
+				url += '&sc=wa_share';
+				break;
+				case '/':
+					url += '/sc/wa_share';
+				break;
+		}
+	}
+	else
+	{
+		url += '?sc=wa_share';
+	}
+	var encodedText = encodeURIComponent(pageTitle.replace(/\"/g, '&quot;') + ' ' + url);
+	var whatsAppHtml = '<a class="a_underline_off" href="whatsapp://send?text=' + encodedText + '" data-action="share/whatsapp/share">' +
+		'<img align="absmiddle" src="/images/1/global/toolbar/whatsapp.png" alt="whatsapp" />&nbsp;<span>WhatsApp</span>' +
+			'</a>';
+
+	var toolbars = Co.Tools.GetElementsByClassName('co_body_toolbar', 'div', document.getElementById('co_content_container'));
+	if (toolbars.length > 0)
+	{
+		for (var i = 0; i < toolbars.length; i++)
+		{
+			var whatsAppItem = Co.Tools.getChildElementById('whatsappContainer', toolbars[i]);
+			if (whatsAppItem)
+				whatsAppItem.innerHTML = whatsAppHtml;
+		}
+	}
+	else
+	{
+		//in case whatsApp is showing not in the toolbar i.e. omer challenge
+		var whatsAppItem = Co.Tools.getChildElementById('whatsappContainer', document.getElementById('BodyContainer'));
+		if (whatsAppItem)
+			whatsAppItem.innerHTML = whatsAppHtml;
+	}
+}
+
+function loadPinterest()
+{
+	if (socialNetworks.Pinterest.length <= 0)
+		return;
+
+	var metaTags = document.getElementsByTagName("meta"), title = '', description = '', imagePath = '', primaryImage = '', lastWidth = 0, lastHeight = 0;
+	for (var i = 0; i < metaTags.length; i++)
+	{
+		switch (metaTags[i].getAttribute("name"))
+		{
+			case "description":
+				description = metaTags[i].getAttribute("content");
+				continue;
+			case "title":
+				title = metaTags[i].getAttribute("content");
+				continue;
+		}
+		switch (metaTags[i].getAttribute("property"))
+		{
+			case "og:title":
+				if (title == null || title == "")
+					title = metaTags[i].getAttribute("content");
+				break;
+			case "og:image":
+				var currentWidth = parseFloat(metaTags[i].getAttribute("width"), 10) || 0;
+				var currentHeight = parseFloat(metaTags[i].getAttribute("height"), 10) || 0;
+
+				if (metaTags[i].getAttribute("primary") === "true")
+					primaryImage = metaTags[i].getAttribute("content");
+
+				if (currentWidth == 0 || (currentWidth * currentHeight) > (lastWidth * lastHeight))
+				{
+					imagePath = metaTags[i].getAttribute("content");
+				}
+				lastWidth = currentWidth;
+				lastHeight = currentHeight;
+				break;
+		}
+	}
+	if (primaryImage != '')
+		imagePath = primaryImage;
+
+	for (var i = 0, items = socialNetworks.Pinterest; i < items.length; i++)
+	{
+		var node = Co.Tools.GetElement("pinit_" + items[i].id);
+		node = Co.Tools.Content.CreateElement("a", { "href": "//pinterest.com/pin/create/button/?url=" + encodeURIComponent(items[i].href) + (imagePath != "" ? "&media=" + encodeURIComponent(imagePath) : "") + (description != "" ? "&description=" + encodeURIComponent(description) : ""), "data-pin-do": "buttonPin", "data-pin-config": "beside" }, node);
+		Co.Tools.Content.CreateElement("img", {"src": "//assets.pinterest.com/images/pidgets/pin_it_button.png"}, node);
+	}
+	Co.Tools.Content.LoadScript("//assets.pinterest.com/js/pinit.js");
+}
+
+function fbAsyncInitCallback() {
+	FB.Event.subscribe('edge.create', function (response, obj) {
+		var path = '/webservices/remotecall/RateArticle';
+		var request = new Co.Ajax.RequestObject(path);
+		request.EnableCaching = true;
+		request.DisablePage = false;
+		request.Parameters.aid = Co.ArticleId;
+		request.Method = "POST";
+		Co.Ajax.Request(request);
+	});
+}
+
+Co.DomEvents.AddListener(window, 'domload', function () {
+	$j(document).on("mouseover", "[data-tooltip]", function(e) {
+		var text = $j(this).data("tooltip");
+		if (text.trim() != '')
+			Co.Layer.ShowTooltip(this, text, {});
+	});
+});
+
+$j(function () {
+	function handleOwlSetupAndTeardown() {
+		$j('.owl-carousel').each(function () {
+			if (document.body.clientWidth >= 771) {
+				// Allow individual carousel instances to override the default options via a data-owl-carousel attribute
+				var overrideOptions = JSON.parse(this.dataset['owl-carousel'] || '{}');
+				$j(this).owlCarousel(Object.assign({}, defaultOptions, overrideOptions));
+			} else {
+				$j(this).owlCarousel('destroy');
+			}
+		});
+	}
+	if ($j.fn.owlCarousel) {
+		var defaultOptions = {
+			loop: false,
+			margin: 0,
+			nav: true,
+			rtl: document.body.classList.contains('dir_rtl'),
+			responsiveBaseElement: ".vs-video-row ",
+			responsive: {
+				0: {
+					items: 3,
+					slideBy: 3
+				},
+				686: {
+					items: 4,
+					slideBy: 4
+				}
+			}
+		};
+		handleOwlSetupAndTeardown();
+		window.addEventListener('resize', handleOwlSetupAndTeardown);
+	}
+	window.handleOwlSetupAndTeardown = handleOwlSetupAndTeardown;
+});
+
+
+/**
+ * Called from cache buster code when we load the user account information. If we have a first name, show the user the
+ * logged in view.
+ */
+function setHeaderVisibility(account) {
+	if (!account || !account.first_name) {
+		return;
+	}
+
+
+	$j('.js-header-login-button').remove();
+	$j('.js-header-user-name').show();
+}
+
+$j(function() {
+	setUpHeaderItems()
+})

@@ -1,0 +1,78 @@
+﻿function initCountDown() {
+	function CountDownItem(element, resetTo, next) {
+		this.element = element;
+		this.next = next;
+		this.get = parseInt(this.element.text());
+		this.resetTo = resetTo;
+	}
+
+	CountDownItem.prototype = {
+		constructor: CountDownItem,
+		getPlace: function () {
+			return parseInt(this.element.text());
+		},
+		setPlace: function (place) {
+			this.element.text(place);
+		},
+		decrement: function () {
+			if (this.getPlace() > 0) {
+				this.setPlace(this.getPlace() - 1);
+			} else {
+				if (this.hasMoreTime())
+					this.setPlace(this.resetTo);
+				if (this.next)
+					this.next.decrement.call(this.next);
+			}
+		},
+		hasMoreTime: function () {
+			if (this.getPlace() > 0)
+				return true;
+			else
+				return this.next.hasMoreTime();
+		}
+	};
+
+	function LastItem(element) {
+		this.element = element;
+		this.deffered = $j.Deferred();
+	}
+	LastItem.prototype = Object.create(CountDownItem.prototype);
+	LastItem.prototype.constructor = LastItem;
+	LastItem.prototype.decrement = function () {
+		if (this.getPlace() == 0) {
+			clearInterval(campaignCountdownInterval);
+			this.deffered.resolve();
+		}
+		else
+			CountDownItem.prototype.decrement.call(this);
+	};
+	LastItem.prototype.hasMoreTime = function () {
+		return this.getPlace() != 0;
+	}
+
+	var countDownElements = {
+		seconds: $j('.fs-countdown-seconds .fs-countdown-number'),
+		minutes: $j('.fs-countdown-minutes .fs-countdown-number'),
+		hours: $j('.fs-countdown-hours .fs-countdown-number'),
+		days: $j('.fs-countdown-days .fs-countdown-number')
+	};
+
+	var lastItem = new LastItem(countDownElements.days);
+
+	var countDown =
+		new CountDownItem(countDownElements.seconds, 59,
+			new CountDownItem(countDownElements.minutes, 59,
+				new CountDownItem(countDownElements.hours, 23, lastItem)
+			)
+		);
+
+	campaignCountdownInterval = setInterval(function () { countDown.decrement() }, 1000);
+
+	window.CampaignCountdownDays = lastItem;
+
+	$j(document).trigger("countdown.init", lastItem);
+}
+
+$j(function() {
+	initCountDown();
+})

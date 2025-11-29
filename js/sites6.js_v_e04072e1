@@ -1,0 +1,236 @@
+CS = {
+	articleId: "",
+
+	searchResultsArticleId: 68666,
+	searchArticleId: 67250,
+
+	init: function(Co) {
+		this.articleId = Co.ArticleId;
+		this.sectionId = Co.SectionId;
+
+		// Initialize all tweaks and modules
+		this.search.init();
+		this.mobileMenu.init();
+		this.header.init();
+		this.navMenu.init();
+		this.insideHeader.init();
+	},
+	// Mobile menu toggling
+	mobileMenu: {
+		init: function() {
+			this.addMenuButton();
+		},
+
+		addMenuButton: function() {
+			var menuElementParent = jQuery("#co_menu_container_wrapper");
+			var menuElement = menuElementParent.find("#co_menu_container");
+
+			// Add close menu button
+			menuElement.prepend("<button type='button' class='cs-mobile-menu-close js-mobile-menu-close'><i class='fa fa-times'>&nbsp;</i></button>");
+
+			// Add close menu back
+			menuElementParent.prepend("<button type='button' class='cs-mobile-menu-close-back js-mobile-menu-close'>&nbsp;</button>");
+
+
+			var openMenuElement = jQuery(".js-mobile-menu-open");
+			var closeMenuElement = jQuery(".js-mobile-menu-close");
+
+			openMenuElement.click(function()
+			{
+				$j("body").addClass("menu-open");
+			});
+
+			closeMenuElement.click(function()
+			{
+				$j("body").removeClass("menu-open");
+			});
+
+			menuElement.find(".co_menu_item.arrow").append("<button type='button' class='js-menu-item-toggle cs-menu-item-toggle'>&nbsp;</button>");
+
+			menuElement.find(".js-menu-item-toggle").click(function()
+			{
+				jQuery(this).closest(".co_menu_item").toggleClass("item-open");
+			});
+
+		},
+	},
+
+	// Replace any new lines with spaces (backup for css method that does not work in IE)
+	navMenu: {
+		init: function() {
+			this.replaceNewLinesWithSpaces();
+		},
+
+		replaceNewLinesWithSpaces: function() {
+			jQuery("#co_menu_container #tabContentMain .co_menu_item .parent a.parent").each(function()
+			{
+				jQuery(this).html(jQuery(this).html().replace("<br>", " "));
+			})
+		},
+	},
+
+
+	// Make the entire header sticky on scroll
+	header: {
+		init: function() {
+			this.makeSticky();
+		},
+
+		makeSticky: function() {
+
+			var $header = jQuery('#header'),
+				scrollClass = 'on-scroll',
+				activateAtY = 40,
+				scrollUpWidth = 1024;
+
+			function activateHeader() {
+				$header.addClass(scrollClass);
+			}
+
+			function deactivateHeader() {
+				$header.removeClass(scrollClass);
+			}
+
+			var previousScroll = 0;
+
+			jQuery(window).scroll(function()
+			{
+				var currentScroll = jQuery(window).scrollTop();
+
+				if (jQuery(window).scrollTop() > activateAtY) {
+
+					// On smaller screens only make the menu sticky on scroll up
+					if (jQuery(window).width() <= scrollUpWidth) {
+						if (currentScroll < previousScroll) {
+							activateHeader();
+						}
+					} else {
+						activateHeader();
+					}
+
+				} else {
+					deactivateHeader();
+				}
+				previousScroll = currentScroll;
+			});
+		}
+	},
+
+
+
+	// Find the image to display on inside page header
+	// Ideally should be moved server-side in the page markup
+	insideHeader: {
+		headerElSelector:
+			"#BodyContainer #co_content_container > .clearfix > .g960:not(.categorized)", // Target the page header (ideally should have more reliable and unique class/id to target)
+		headerImage: "/media/images/1066/LgMQ10661686.jpg", // Fallback image
+		headerEl: "",
+
+		init: function() {
+			this.headerEl = jQuery(this.headerElSelector);
+			this.setHeaderText();
+		},
+
+		// Get the header from within an article (e.g. on some news articles)
+		getInArticleImage: function() {
+			var articleImage = jQuery("#co_index_container .imagetable img");
+
+			if (articleImage.length > 0) {
+
+				image = articleImage.attr("src");
+				articleImage.closest(".imagetable").hide();
+				return image;
+			}
+
+			return null;
+		},
+
+		// Get the header from the meta tag
+		getMetaImage: function() {
+			var metaImage = jQuery("meta[property='og:image']");
+
+			if (metaImage.length > 0) {
+				var width = metaImage.attr("width");
+				var image = metaImage.attr("content");
+
+				// Only if image is large enough to prevent tiny images being used
+				if (width > 460) return image;
+			}
+
+			return null;
+		},
+
+		// Set the header text of the page if it is not set for some articles
+		setHeaderText: function() {
+			if (this.headerEl.find(".article-header").length <= 0 || jQuery(".article-header__title").text() == "") {
+				var articleHeader = "";
+				var breadcrumbs = '';
+				var breadcrumbsHtml = '';
+
+				if (CS.articleId == CS.searchResultsArticleId) {
+					breadcrumbs = '<a class="breadcrumbs__crumb" href="/search">Search</a>';
+					articleHeader = jQuery("#StandardSearchHeaderSearchHeader_search").val();
+				}
+				if (CS.articleId == CS.searchArticleId) {
+					articleHeader = 'Search';
+				}
+
+				if (jQuery("#calendar_header").length > 0) {
+					breadcrumbs = jQuery("#calendar_header .breadcrumbs").html();
+					articleHeader = jQuery("#calendar_header #PrimaryHeader").html() + " / " + jQuery("#calendar_header .cal_secondary_header ").html();
+				}
+
+				if (breadcrumbs) {
+					breadcrumbsHtml = '<div class="breadcrumbs breadcrumbs hide_for_print" data-list-name="breadcrumbs">' + breadcrumbs + '</div>';
+				}
+
+				if (!articleHeader) {
+					articleHeader = document.title.split(" - ")[0];
+				}
+
+
+
+			}
+		}
+	},
+
+	// Move search into top bar and add toggle button
+	// Ideally should be moved server-side in the page markup
+	search: {
+		searchContainerSelector: "#header_container .links > .float_right",
+		searchElSelector: ".cco_search_header",
+
+		init: function () {
+			this.addToTopHeader();
+			this.registerOpenTrigger();
+		},
+
+		addToTopHeader: function () {
+			jQuery(this.searchContainerSelector).append(
+				'<div class="search-trigger-container"><a href="#" class="search-trigger"><i class="fa fa-search"></i></a></div>'
+			);
+			jQuery(this.searchContainerSelector).append(jQuery(this.searchElSelector));
+			jQuery("#MainSearchForm").removeClass("clearfix");
+
+		},
+
+		registerOpenTrigger: function() {
+			var self = this;
+
+			jQuery(".search-trigger").click(function()
+			{
+				jQuery(self.searchElSelector).addClass("show");
+				jQuery("#MainSearchForm .co_search").focus();
+
+				return false;
+			});
+		}
+	}
+
+};
+
+$j(function () {
+
+	CS.init(Co);
+});
+

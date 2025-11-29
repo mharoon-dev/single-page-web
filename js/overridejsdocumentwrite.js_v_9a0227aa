@@ -1,0 +1,41 @@
+﻿//Yes, this is bad, but the CMS body should never have even close to this many scripts.
+var placeholderId = 9999;
+
+document.write = document.writeln = function (html) {
+
+    var temp = $j("<div>").append(html);
+
+    //get currentScript, or else the last one on the page (assumes synchronous execution)
+    var scriptTags, thisScript = document.currentScript || (scriptTags = document.getElementsByTagName("script"), scriptTags[scriptTags.length - 1]);
+    // find placeholder element that corresponds to this script otherwise, add after the script tag itself (default document.write behavior)
+    var placeholder = document.getElementById(thisScript.dataset.placeholder) || thisScript;
+	//replace any scripts being added via document.write with placeholders
+    var scripts = temp.find("script").replaceWith(function() {
+	    this.dataset.placeholder = "scriptPlaceholder" + (++placeholderId);
+	    return '<span id="' + this.dataset.placeholder + '"/>';
+    });
+
+	//add any non-script html to the body.
+	$j(placeholder).after(temp.html());
+
+    //Scripts appended by jquery aren't run syncronously. So we have to make sure they all load before running the inline scripts
+	var scriptIndex = 0;
+	function loadNextScript() {
+		if (scriptIndex < scripts.length) {
+            //get the script at the current index
+			var script = scripts[scriptIndex];
+			var s = document.createElement('script');
+			s.src = script.src;
+			s.dataset.placeholder = script.dataset.placeholder;
+			s.type = "text/javascript";
+			s.async = false;
+			s.onload = function() {
+				scriptIndex++;
+				loadNextScript();
+			}
+			document.getElementsByTagName('head')[0].appendChild(s);
+		}
+    }
+	loadNextScript();
+ 
+}

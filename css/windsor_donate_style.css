@@ -1,0 +1,143 @@
+.aid-4836240 .form-line,
+.aid-4836240 #cid_5 {
+  max-width: 450px;
+  margin: 0 auto !important;
+}
+
+/* Header Text */
+.aid-4836240 div#cid_1 {
+  text-align: center;
+}
+
+/* Amounts */
+.aid-4836240 li#id_3 {
+  display: block;
+  font-weight: bold;
+}
+
+.aid-4836240 div#label_3 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.aid-4836240 li#id_3 .form-multiple-column .form-radio-item {
+  width: 87px;
+  font-size: 16px;
+  margin-bottom: 13px;
+}
+
+.aid-4836240 #id_3 .form-radio-item.clear-left {
+  clear: none;
+}
+
+/* Other Amount */
+.aid-4836240 input#other_3 {
+  position: relative;
+  top: 8px;
+}
+
+.aid-4836240 input#input_3 {
+  margin-left: 10px;
+  width: calc(100% - 31px);
+  position: relative;
+  top: 10px;
+}
+
+.aid-4836240 input#input_3 {
+  height: 35px;
+}
+
+
+.aid-4836240 li#id_3 .form-multiple-column .form-radio-item:last-child {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Giving Opp label */
+.aid-4836240 #label_12 {
+  display: none;
+}
+
+/* Label Payment/Contact */
+.aid-4836240 div#label_11,
+.aid-4836240 div#cid_5 h2 {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.aid-4836240 div#label_11 > label,
+.aid-4836240 div#cid_5 h2 {
+  font-weight: bold;
+  color: #317CB8;
+}
+
+
+.aid-4836240 .co_body .content .form-all .form-captcha input,
+.aid-4836240 .co_body .content .form-all .form-textarea,
+.aid-4836240 .co_body .content .form-all .form-textbox:not(.form-checkbox-other-input):not(.form-radio-other-input),
+.aid-4836240 .co_body .content .form-all .form-dropdown,
+.aid-4836240 .form-captcha input,
+.aid-4836240 .form-checkbox-other-input, .form-radio-other-input, .form-textarea, .form-textbox {
+  border: 1px solid #edecec;
+  height: 48px;
+  padding: 0 15px;
+  font-size: 16px;
+}
+
+.aid-4836240 .co_body .content .form-all .form-captcha input:focus,
+.aid-4836240 .co_body .content .form-all .form-textarea:focus,
+.aid-4836240 .co_body .content .form-all .form-textbox:not(.form-checkbox-other-input):not(.form-radio-other-input):focus {
+  outline: none;
+  border: 1px solid #54AFCB;
+}
+
+.aid-4836240 .co_body .content .form-all .form-label-auto label,
+.aid-4836240 .co_body .content .form-all .form-label-left label,
+.aid-4836240 .co_body .content .form-all .form-label-right label,
+.aid-4836240 .co_body .content .form-all .form-label-top label {
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.aid-4836240 #BodyContainer .no-hero-image #co_content_container .master-content-wrapper.master-content-wrapper .article-header .article-header__title {
+  color: white;
+  text-transform: uppercase;
+  font-size: 100px;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+/* Giving Dek */
+.aid-4836240 .co_body h2 {
+  font-size: 32px;
+}
+
+/* Recurring */
+.aid-4836240 li#id_4 {
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .aid-4836240 #BodyContainer .no-hero-image #co_content_container .master-content-wrapper.master-content-wrapper {
+    background-size: cover !important;
+  }
+  .aid-4836240 #BodyContainer .no-hero-image #co_content_container .master-content-wrapper.master-content-wrapper .article-header .article-header__title {
+    font-size: 65px;
+  }
+  .aid-4836240 .form-all.dir_ltr {
+    padding: 0 10px;
+  }
+  /* Amounts */
+  .aid-4836240 #cid_3 .form-multiple-column {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .aid-4836240 .form-checkbox-item label, .form-grading-label, .form-radio-item label {
+    white-space: pre-line;
+  }
+}
+
+

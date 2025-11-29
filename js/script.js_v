@@ -1,0 +1,72 @@
+let imgCont;
+
+const PIC_PATHS = [
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/1.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/2.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/3.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/4.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/5.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/6.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/7.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/8.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/9.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/10.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/11.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/12.jpg',
+  'https://cdn.webmk.co/windsor-chabad/campaign-2025/13.jpg',
+];
+let currentPic = -1;
+
+const imageArray = [];
+PIC_PATHS.forEach(function (path, idx) {
+  imageArray[idx] = new Image();
+  imageArray[idx].src = path;
+});
+
+function swapImage() {
+  currentPic = ++currentPic > PIC_PATHS.length - 1 ? 0 : currentPic;
+  imgCont.src = imageArray[currentPic].src;
+  setTimeout(swapImage, 3000);
+}
+
+function findInitial(words) {
+  const EXCLUDES = ["and", "family", "&", "inc.", "inc"];
+  let i = words.length - 1;
+  while (i > 0) {
+    console.log(EXCLUDES.includes(words[i]), words[i]);
+    if (!EXCLUDES.includes(words[i].toLowerCase())) {
+      return words[i][0];
+    }
+    i -= 1;
+  }
+  return words[0][0];
+}
+
+function setInitials() {
+  jQuery(".fs-matcher-image").append(
+    '<div class="initial"><i class="fas fa-fire"></i></div>'
+  );
+  // const matcherEls = document.querySelectorAll('.fs-matcher');
+  // matcherEls.forEach(el => {
+  //   const title = el.querySelector('.fs-matcher-title').innerText;
+  //   const titleWords = title.split(' ');
+  //   const initial = findInitial(titleWords);
+  //   const area = el.querySelector('.fs-matcher-image');
+  //   const div = document.createElement('div');
+  //   div.classList.add('initial');
+  //   const textNode = document.createTextNode(initial);
+  //   div.appendChild(textNode);
+  //   area.appendChild(div);
+  // });
+}
+
+function init() {
+  // setInitials();
+  imgCont = document.querySelector('.fs-about-main-body img');
+  swapImage();
+}
+if (document.readyState !== 'loading'){
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', init);
+}
