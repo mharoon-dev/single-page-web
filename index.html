@@ -180,6 +180,23 @@
       />
     <![endif]-->
     <!-- Co:JsonLdResources -->
+    <script>$q=[];$j=function(f){$q.push(f);}</script>
+    <title>Chabad Jewish Centre of Windsor - LIGHT THE DARKNESS</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({"event":"datalayer-initialized","page":{"numberOfComments":0,"publicationDate":"2025-10-28","primaryArticleId":7093881,"title":"Campaign","author":"","authorId":0,"contentLevel1":"System Misc","contentLevel2":"Fundraising Campaigns","contentLevel3":"Campaign","siteName":"Chabad Jewish Centre"},"time":{"upcomingHoliday":"Chanukah","daysToUpcomingHoliday":17,"hebrewDate":"5786-09-08"}});
+      dataLayer.push({ 'articleHierarchy': '-1937868-2429517-4976746-7093881-', 'keywords': '-k2898-k2170-k20429-k22262-k2185-', 'k': '-1937868-2429517-4976746-7093881--k2898-k2170-k20429-k22262-k2185-' });
+    </script>
+    <script>
+      (function(c,h,a,b,a,d){c[a]=c[a]||[];c[a].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=h.getElementsByTagName(b)[0],
+      j=h.createElement(b);j.async=true;
+      j.src='https://w6.chabad.org/mitzvah-tank.js';f.parentNode.insertBefore(j,f);
+      })(window,document,0,'script','dataLayer');
+    </script>
     <script
       type="text/javascript"
       async=""
@@ -200,10 +217,6 @@
       src="js/js_id_g_srm5efn6sw_cx_c_gtm_4e5bi1"
     ></script>
     <script async="" src="js/mitzvah_tank.js"></script>
-    <title>Chabad Jewish Centre of Windsor - LIGHT THE DARKNESS</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Start of StatCounter Code -->
 
@@ -233,15 +246,74 @@
       href="https://windsorchabad.com/media/images/1160/mlrI11609196.png"
     />
 
+    <script>
+      function ready(fn) {
+        if (document.readyState !== 'loading'){
+          fn();
+        } else {
+          document.addEventListener('DOMContentLoaded', fn);
+        }
+      }
+      function addClass() {
+        var path = window.location.pathname;
+        var matches = path && path.match(/eventid\/(\d+)/);
+        if (path.includes('ArticleCcoResponse')) document.body.classList.add('form-auto-response');
+        var aid = Co && Co.ArticleId;
+        if (matches && matches.length > 1) {
+          var eventClass = 'eventid-' + matches[1];
+          document.body.classList.add(eventClass);
+        } else {
+          document.body.classList.add('aid-' + aid);
+        }
+      };
+      ready(addClass);
+    </script>
     <script src="js/page_rules.js"></script>
-    <script type="text/javascript" src="js/script.js_v"></script>
     <script src="js/cdo_normalize.js"></script>
     <script src="js/core.oafg07ee.js" type="module"></script>
     <script src="js/api.js_render_explicit_onload_onrecaptchaload"></script>
 
-    <div class="fs-root fs-pre-campaign">
+    <script>
+      var teamsStatusMessage = "Of $<<amount>> Raised";
+    </script>
+    <script type="text/javascript">
+      fsParams = {
+        matchMultiplier: 2,
+        processingFee: 3,
+        links: {
+          campaignHome: 'index.html',
+          donate: 'index.donate.html',
+          partners: 'index.partners.html',
+        },
+        layout: {
+          oneColumn: false
+        }
+      }
+      
+      var Co = Co || {};
+      Co.Fundraising = Co.Fundraising || {};
+      // pass mosadId and campaginArticleId to client
+      Co.Fundraising.MosadId = 9265;
+      Co.Fundraising.CampaignArticleId = 7093881;
+      Co.Fundraising.TotalDonors = 0;
+      Co.Fundraising.CampaignId = 4487;
+      Co.Fundraising.OneColumn = false;
+    </script>
+    <div class="fs-root fs-pre-campaign ">
       <div class="fs-container">
         <!-- AddToAny Config Vars -->
+        <script type="text/javascript">
+          var addtoany_config = {
+            ui_disable: true,
+            lang: "en",
+          };
+          var addtoany_share = {
+            title: "I donated to the LIGHT THE DARKNESS campaign. Would you join too?",
+            description: "I just contributed to Chabad Jewish Centre of Windsor&#39;s LIGHT THE DARKNESS campaign because this is an important cause. I would greatly appreciate it if you would, too. How about it? Thanks!"
+          };
+          
+          InitialDonors = {"Donors":[{"Id":650883,"Date":"2025-11-16T18:45:38Z","DateString":"11/16/2025 18:45:38 GMT-05:00","Title":"","FirstName":"","LastName":"","Name":"Anonymous","Dedication":"in honor of Mendel","Quantity":0,"TeamId":0,"ActualAmount":400.0,"EffectiveAmount":800.0,"EffectiveAmountFormatted":"800","IsAnonymous":true}],"Teams":[],"Campaign":{"CurrencySymbol":"$"}};
+        </script>
 
         <div
           class="container-fluid fs-header-top"
@@ -257,7 +329,11 @@
                 </div>
               </div>
               <div class="fs-top-tools col-md-6 text-right">
-                <div class="fs-top-tools-buttons">
+                  <div class="fs-top-tools-buttons">
+                  <script>
+                    var a2a_config = a2a_config || {};
+                    a2a_config.icon_color = "#666";
+                  </script>
                   <div
                     class="a2a_kit a2a_default_style a2a_kit_size_30 fs-share-tools"
                     data-a2a-url="https://www.windsorchabad.com/templates/fundraising/default_cdo/aid/7093881"
@@ -541,7 +617,7 @@
                       >$<span id="totalAmount">0</span></span
                     >
                   </div>
-                  <button type="button" class="donate-now-btn">
+                  <button type="button" class="donate-now-btn js-action-open-donate">
                     <span class="donate-text">DONATE NOW</span>
                     <span class="donate-arrow">></span>
                   </button>
@@ -651,7 +727,7 @@
               </div>
             </div>
 
-            <!-- <div class="modal fade about-modal" id="about_modal">
+            <div class="modal fade about-modal" id="about_modal">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -671,12 +747,14 @@
                     <div class="fs-about js-about p-0">
                       <div class="mb-20">
                         <img
-                          src="image/pmex12990461.png"
+                          src="https://w2.chabad.org/media/images/1299/PMex12990461.png"
                           class="center-block modal-image"
+                          alt="Campaign Image"
                         />
                       </div>
 
                       <div
+                      style="padding: 0 !important;"
                         class="fs-about-text js-about-text js-show-all --show-all"
                       >
                         <h3>Fuel The Flame That Illuminates Windsor/Essex</h3>
@@ -736,11 +814,30 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
 
             <!-- END CACHE -->
           </div>
         </div>
+
+        <script id="js-partners-list-template" type="text/x-handlebars-template">
+{{#each Partners}}
+<div class="fs-partner-container {{iif (gt @index 17) 'fs-extra-partner'}}">
+<div class="fs-partner">
+<div class="fs-partner-name">{{Name}}</div>
+<div class="fs-partner-donation-amount">${{EffectiveAmountFormatted}}</div>
+{{#if Dedication}}
+<div class='fs-partner-dedication'>{{Dedication}}</div>
+{{/if}}
+<div class="fs-bottom-triangle">
+<svg version="1.1" viewBox="0 0 1 1" preserveAspectRatio="none" class="svg-content">
+<polygon points="0.5 1, 0 0, 1 0" fill="#9FD3E7"></polygon>
+</svg>
+</div>
+</div>
+</div>
+{{/each}}
+</script>
 
         <!-- Donor List Section -->
         <div class="container-fluid fs-donor-section">
@@ -871,12 +968,14 @@
                 <div class="col-xs-2 fs-btn-close-container">
                   <a
                     class="btn fs-btn fs-btn-close js-action-close-donate"
-                    href="index.html"
+                    href="javascript:void(0)"
+                    aria-label="Close"
                     ><span
                       class="glyphicon glyphicon-remove"
                       aria-hidden="true"
                     ></span
-                  ></a>
+                    ><span class="close-icon-text" style="display: none;">×</span>
+                  </a>
                 </div>
               </div>
               <div class="fs-donate-body">
@@ -1673,17 +1772,22 @@
                 </div>
                 <donation-summary processingfeeratio="0.03"> </donation-summary>
 
+                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                <script>
+                  var recaptchaIsEnterprise = false;
+                  var recaptchaV2Key = "6LcG_TcUAAAAAKAVgwgW39ujc9OCjXSoQYFIA-Su";
+                </script>
                 <input
                   type="hidden"
                   class="js-recaptcha-input"
                   name="cdo-captcha-response"
                   value=""
-                  data-div-id="4dc0faef-3a16-4c62-b27f-91e1b0df92dc"
+                  data-div-id="623a7804-ccd7-499d-95df-df63373731e7"
                   data-processed="false"
                 />
                 <div
                   class="js-recaptcha-wrapper"
-                  id="4dc0faef-3a16-4c62-b27f-91e1b0df92dc"
+                  id="623a7804-ccd7-499d-95df-df63373731e7"
                 ></div>
 
                 <button
@@ -1728,7 +1832,10 @@
               </p>
               <div class="fs-share">
                 Share on:
-
+                <script>
+                  var a2a_config = a2a_config || {};
+                  a2a_config.icon_color = "#666";
+                </script>
                 <div
                   class="a2a_kit a2a_default_style a2a_kit_size_30 fs-add-to-any"
                   data-a2a-url="https://www.windsorchabad.com/templates/fundraising/default_cdo/aid/7093881"
@@ -2071,6 +2178,19 @@
       </div>
     </div>
     <script type="text/javascript" src="js/fundraising.js_v_8cea483b"></script>
+    <script>$j = $j.fn ? $j : jQuery;$j(()=>{$q.forEach(f=>{try{f.call(window);}catch(ex){console.error(ex);}});})</script>
+    <script language="javascript" type="text/javascript">
+      Co.Settings = {CacheClassName:'js-cache-default',MosadName:'Chabad Jewish Centre'};
+      Co.ArticleId = '7093881';
+      Co.SectionId = 2429517;
+      Co.PartnerSiteId = 0;
+      Co.SiteId = 9265;
+      Co.IsMobilePage = false;
+      Co.IsResponsive = false;
+      Co.DbDomain = 'WindsorChabad.com';
+      Co.LanguageCode = 'en-US';
+      Co.LoginStatus = 'None';
+    </script>
 
     <div
       data-tether-id="1"
@@ -2149,6 +2269,245 @@
             }
           });
         });
+
+        // Donate Form Modal Show/Hide Functionality
+        // Use event delegation to avoid conflicts with other scripts
+        try {
+          // Wait for DOM and other scripts to be ready
+          function initDonateForm() {
+            try {
+              const donateForm = document.querySelector('.js-donate-form');
+              const thankYouSection = document.querySelector('.fs-thank-you');
+
+              if (!donateForm) {
+                console.warn('Donate form not found');
+                return;
+              }
+
+              // Show donate form (using original CSS class method)
+              function showDonateForm(e) {
+                try {
+                  if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }
+                  // Use original CSS class method - add class to body
+                  document.body.classList.add('fs-open-donate-form');
+                  // Prevent body scroll when modal is open
+                  document.body.style.overflow = 'hidden';
+                  if (thankYouSection) {
+                    thankYouSection.style.display = 'none';
+                  }
+                } catch (err) {
+                  console.error('Error showing donate form:', err);
+                }
+              }
+
+              // Hide donate form (using original CSS class method)
+              function hideDonateForm(e) {
+                try {
+                  if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }
+                  // Remove class from body to hide modal (original method)
+                  document.body.classList.remove('fs-open-donate-form');
+                  // Restore body scroll
+                  document.body.style.overflow = '';
+                } catch (err) {
+                  console.error('Error hiding donate form:', err);
+                }
+              }
+
+              // Use event delegation on document to avoid conflicts
+              document.addEventListener('click', function(e) {
+                try {
+                  // Check if clicked element or its parent has the class
+                  var target = e.target;
+                  while (target && target !== document.body) {
+                    // Only handle donate buttons, not modal triggers
+                    if (target.classList && target.classList.contains('js-action-open-donate')) {
+                      // Make sure it's not inside a modal trigger
+                      if (!target.closest('[data-toggle="modal"]') && !target.closest('.about-modal-btn')) {
+                        showDonateForm(e);
+                        return;
+                      }
+                    }
+                    if (target.classList && target.classList.contains('js-action-close-donate')) {
+                      hideDonateForm(e);
+                      return;
+                    }
+                    target = target.parentElement;
+                  }
+                } catch (err) {
+                  // Silently ignore errors from browser extensions
+                }
+              }, true); // Use capture phase
+
+              // Close on escape key
+              document.addEventListener('keydown', function(e) {
+                try {
+                  if (e.key === 'Escape' && document.body.classList.contains('fs-open-donate-form')) {
+                    hideDonateForm(e);
+                  }
+                } catch (err) {
+                  // Silently ignore
+                }
+              });
+
+              // Close on click outside the form (on the overlay/background)
+              // The overlay is created by CSS :before pseudo-element on fs-full-donate-form
+              if (donateForm) {
+                donateForm.addEventListener('click', function(e) {
+                  try {
+                    // Check if click is on the form container itself (overlay) and not on inner content
+                    var formInner = donateForm.querySelector('.fs-donate-inner');
+                    if (e.target === donateForm || (formInner && !formInner.contains(e.target))) {
+                      hideDonateForm(e);
+                    }
+                  } catch (err) {
+                    // Silently ignore
+                  }
+                });
+              }
+            } catch (error) {
+              console.error('Error initializing donate form:', error);
+            }
+          }
+
+          // Initialize after a short delay to let other scripts load
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+              setTimeout(initDonateForm, 300);
+            });
+          } else {
+            setTimeout(initDonateForm, 300);
+          }
+        } catch (error) {
+          console.error('Error setting up donate form handler:', error);
+        }
+
+        // About Campaign Modal Functionality
+        // Fix immediate closing issue and ensure it works properly
+        try {
+          function initAboutModal() {
+            try {
+              var aboutModalBtn = document.querySelector('.about-modal-btn');
+              var aboutModal = document.getElementById('about_modal');
+              
+              if (aboutModalBtn && aboutModal) {
+                // Prevent event bubbling to avoid conflicts
+                aboutModalBtn.addEventListener('click', function(e) {
+                  try {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
+                    // If Bootstrap/jQuery is available, use it
+                    if (typeof jQuery !== 'undefined' && jQuery.fn.modal) {
+                      jQuery(aboutModal).modal('show');
+                    } else {
+                      // Fallback: manually show modal
+                      aboutModal.style.display = 'block';
+                      aboutModal.classList.add('show');
+                      aboutModal.classList.add('in');
+                      document.body.classList.add('modal-open');
+                      document.body.style.overflow = 'hidden';
+                      document.body.style.paddingRight = '15px';
+                      
+                      // Remove existing backdrop if any
+                      var existingBackdrop = document.getElementById('about-modal-backdrop');
+                      if (existingBackdrop) {
+                        existingBackdrop.remove();
+                      }
+                      
+                      // Create backdrop
+                      var backdrop = document.createElement('div');
+                      backdrop.className = 'modal-backdrop fade in';
+                      backdrop.id = 'about-modal-backdrop';
+                      backdrop.style.zIndex = '1040';
+                      document.body.appendChild(backdrop);
+                      
+                      // Set modal z-index
+                      aboutModal.style.zIndex = '1050';
+                      
+                      // Close handlers - only add once
+                      if (!aboutModal.dataset.handlersAdded) {
+                        aboutModal.dataset.handlersAdded = 'true';
+                        
+                        // Close button
+                        var closeBtn = aboutModal.querySelector('[data-dismiss="modal"]');
+                        if (closeBtn) {
+                          closeBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            closeAboutModal();
+                          });
+                        }
+                        
+                        // Close on backdrop click
+                        backdrop.addEventListener('click', function(e) {
+                          if (e.target === backdrop) {
+                            closeAboutModal();
+                          }
+                        });
+                        
+                        // Close on ESC key
+                        var escHandler = function(e) {
+                          if (e.key === 'Escape' && aboutModal.classList.contains('show')) {
+                            closeAboutModal();
+                            document.removeEventListener('keydown', escHandler);
+                          }
+                        };
+                        document.addEventListener('keydown', escHandler);
+                      }
+                    }
+                  } catch (err) {
+                    console.error('Error opening about modal:', err);
+                  }
+                }, true); // Use capture phase to run before other handlers
+              }
+              
+              // Close function
+              function closeAboutModal() {
+                try {
+                  if (typeof jQuery !== 'undefined' && jQuery.fn.modal) {
+                    jQuery(aboutModal).modal('hide');
+                  } else {
+                    aboutModal.style.display = 'none';
+                    aboutModal.classList.remove('show');
+                    aboutModal.classList.remove('in');
+                    document.body.classList.remove('modal-open');
+                    document.body.style.overflow = '';
+                    document.body.style.paddingRight = '';
+                    var backdrop = document.getElementById('about-modal-backdrop');
+                    if (backdrop) {
+                      backdrop.remove();
+                    }
+                  }
+                } catch (err) {
+                  console.error('Error closing about modal:', err);
+                }
+              }
+              
+              // Make close function globally available
+              window.closeAboutModal = closeAboutModal;
+            } catch (error) {
+              console.error('Error initializing about modal:', error);
+            }
+          }
+
+          // Initialize about modal after DOM is ready
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+              setTimeout(initAboutModal, 500);
+            });
+          } else {
+            setTimeout(initAboutModal, 500);
+          }
+        } catch (error) {
+          console.error('Error setting up about modal handler:', error);
+        }
       });
     </script>
   </body>
