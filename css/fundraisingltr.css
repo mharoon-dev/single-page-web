@@ -621,6 +621,7 @@
 .fs-matcher-title {
   font-size: 19px !important;
   line-height: 30px !important;
+  margin-top: 30px;
 }
 .fs-matchers .fs-matcher .fs-matcher-subtitle {
   font-family: Raleway, sans-serif;
@@ -699,9 +700,13 @@
 .fs-countdowndonate {
   padding: 20px 30px;
 }
+
+.fs-countdowndonate {
+  padding-top: 150px;
+}
 .fs-countdown {
   background: url(/image/timer-bg.png) no-repeat;
-  background-size: contain;
+  background-size: cover;
   color: #fff;
   padding-top: 25px;
   padding-bottom: 25px;
@@ -814,6 +819,10 @@
     display: block;
   }
 }
+
+.fs-countdowndonate {
+  border-top: none !important;
+}
 .fs-countdowndonate .fs-bottom-triangle,
 .fs-countdowndonate .fs-left-border-triangle,
 .fs-countdowndonate .fs-left-triangle,
@@ -825,7 +834,7 @@
 .fs-countdowndonate .fs-countdown,
 .fs-countdowndonate .fs-donate {
   position: relative;
-  min-height: 140px;
+  min-height: 184px;
   max-width: 100%;
 }
 @media (min-width: 992px) {
@@ -913,6 +922,7 @@
     border-bottom: none;
   }
 }
+
 .fs-about {
   margin-bottom: 20px;
 }
@@ -1229,6 +1239,11 @@
 .fs-wallboard .fs-about-partners-container {
   overflow: hidden;
 }
+
+.fs-about-partners-container {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
 .fs-partners-open .fs-btn-close-sidebar,
 .fs-wallboard .fs-btn-close-sidebar {
   left: 0;
@@ -1430,10 +1445,17 @@
   justify-content: center;
   text-decoration: none;
 }
-.fs-full-donate-form .fs-donate-header .fs-btn-close-container .fs-btn-close:hover {
+.fs-full-donate-form
+  .fs-donate-header
+  .fs-btn-close-container
+  .fs-btn-close:hover {
   color: rgba(100, 100, 100, 1);
 }
-.fs-full-donate-form .fs-donate-header .fs-btn-close-container .fs-btn-close .glyphicon {
+.fs-full-donate-form
+  .fs-donate-header
+  .fs-btn-close-container
+  .fs-btn-close
+  .glyphicon {
   display: inline-block;
   font-family: "Glyphicons Halflings";
   font-style: normal;
@@ -1442,19 +1464,35 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.fs-full-donate-form .fs-donate-header .fs-btn-close-container .fs-btn-close .glyphicon-remove:before {
+.fs-full-donate-form
+  .fs-donate-header
+  .fs-btn-close-container
+  .fs-btn-close
+  .glyphicon-remove:before {
   content: "\e014";
 }
 /* Fallback if glyphicon font doesn't load */
-.fs-full-donate-form .fs-donate-header .fs-btn-close-container .fs-btn-close .glyphicon-remove:before,
-.fs-full-donate-form .fs-donate-header .fs-btn-close-container .fs-btn-close .glyphicon:empty:before {
+.fs-full-donate-form
+  .fs-donate-header
+  .fs-btn-close-container
+  .fs-btn-close
+  .glyphicon-remove:before,
+.fs-full-donate-form
+  .fs-donate-header
+  .fs-btn-close-container
+  .fs-btn-close
+  .glyphicon:empty:before {
   content: "×";
   font-family: Arial, sans-serif;
   font-size: 28px;
   font-weight: bold;
   line-height: 1;
 }
-.fs-full-donate-form .fs-donate-header .fs-btn-close-container .fs-btn-close .close-icon-text {
+.fs-full-donate-form
+  .fs-donate-header
+  .fs-btn-close-container
+  .fs-btn-close
+  .close-icon-text {
   font-size: 28px;
   font-weight: bold;
   line-height: 1;
@@ -1984,6 +2022,15 @@
 
 .fs-original-goal {
   color: #ef5422 !important;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+#goalBtn,
+#goalrightSideText,
+.fs-countdown-number,
+.fs-countdown-description,
+.donate-calculation {
+  font-family: sans-serif !important;
 }
 .fs-bonus .fs-goal .fs-original-goal:before {
   content: " ";
@@ -3220,7 +3267,8 @@ body {
   height: 100%;
 }
 .fs-footer .fs-copyright {
-  float: left;
+  float: right;
+  margin-top: 93px;
   font-weight: 400;
   font-size: 16px;
   color: #f37743 !important;
@@ -3511,6 +3559,9 @@ body {
   .fs-matchers .fs-matcher {
     padding: 0 !important;
   }
+  #hero-text-2 {
+    margin-bottom: 55px !important;
+  }
   .fs-matchers .fs-matchers-list {
     gap: 0 !important;
     margin: 0 !important;
@@ -3532,6 +3583,9 @@ body {
   .goalRow {
     width: 98%;
     padding-right: 0 !important;
+  }
+  .goalRow {
+    padding-left: 15px !important;
   }
   .fs-goal-text,
   .fs-goal-graph-container {
@@ -3592,8 +3646,13 @@ body {
 
 /* Custom Donation Form Design */
 .custom-donate-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* margin-top: 30px; */
-  padding: 40px;
+  padding: 29px;
+  /* padding-bottom: 0 !; */
   /* width: max-content; */
   background-color: #fff;
 }
@@ -3657,7 +3716,7 @@ body {
   width: 100%;
   max-width: 258px;
   height: 55px;
-  margin-top: 60px;
+  margin-top: 30px;
   background-color: #023768;
   border: none;
   border-radius: 0;
@@ -3688,7 +3747,7 @@ body {
   width: 50px;
   height: 100%;
   background-color: #9fd3e7;
-  color: #333;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3725,7 +3784,6 @@ body {
   color: #6b6a66 !important;
   margin-top: 20px !important;
 }
-
 
 address > h3 {
   font-size: 20px;
@@ -3887,6 +3945,7 @@ address > h3 {
 }
 
 .donor-card:hover {
+  cursor: pointer;
   background: #fff;
   height: auto;
   min-height: 140px;
@@ -3931,7 +3990,8 @@ address > h3 {
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 .donor-time {
@@ -3939,7 +3999,8 @@ address > h3 {
   color: #999;
   white-space: nowrap;
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 .donor-dedication {
@@ -3947,7 +4008,8 @@ address > h3 {
   color: #666;
   margin: 12px 15px 0 15px;
   padding-top: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease, margin-top 0.3s ease;
@@ -4046,4 +4108,8 @@ address > h3 {
     margin-bottom: 20px;
     padding: 20px 12px 12px 12px;
   }
+}
+
+.fs-matchers {
+  border-bottom: none !important;
 }

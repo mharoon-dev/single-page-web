@@ -1,6 +1,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
     <link rel="stylesheet" href="css/inline_styles.css" />
+    <style>
+      .fs-carousel-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 15px;
+        padding: 10px 0;
+      }
+      
+      .fs-carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      
+      .fs-carousel-dot:hover {
+        background-color: #999;
+      }
+      
+      .fs-carousel-dot.active {
+        background-color: #0066cc;
+        width: 14px;
+        height: 14px;
+      }
+      
+      .fs-image-wrap {
+        position: relative;
+      }
+      
+      #about-carousel-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: opacity 0.3s ease;
+      }
+    </style>
   </head>
 
   <body
@@ -180,22 +221,54 @@
       />
     <![endif]-->
     <!-- Co:JsonLdResources -->
-    <script>$q=[];$j=function(f){$q.push(f);}</script>
+    <script>
+      $q = [];
+      $j = function (f) {
+        $q.push(f);
+      };
+    </script>
     <title>Chabad Jewish Centre of Windsor - LIGHT THE DARKNESS</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       window.dataLayer = window.dataLayer || [];
-      dataLayer.push({"event":"datalayer-initialized","page":{"numberOfComments":0,"publicationDate":"2025-10-28","primaryArticleId":7093881,"title":"Campaign","author":"","authorId":0,"contentLevel1":"System Misc","contentLevel2":"Fundraising Campaigns","contentLevel3":"Campaign","siteName":"Chabad Jewish Centre"},"time":{"upcomingHoliday":"Chanukah","daysToUpcomingHoliday":17,"hebrewDate":"5786-09-08"}});
-      dataLayer.push({ 'articleHierarchy': '-1937868-2429517-4976746-7093881-', 'keywords': '-k2898-k2170-k20429-k22262-k2185-', 'k': '-1937868-2429517-4976746-7093881--k2898-k2170-k20429-k22262-k2185-' });
+      dataLayer.push({
+        event: "datalayer-initialized",
+        page: {
+          numberOfComments: 0,
+          publicationDate: "2025-10-28",
+          primaryArticleId: 7093881,
+          title: "Campaign",
+          author: "",
+          authorId: 0,
+          contentLevel1: "System Misc",
+          contentLevel2: "Fundraising Campaigns",
+          contentLevel3: "Campaign",
+          siteName: "Chabad Jewish Centre",
+        },
+        time: {
+          upcomingHoliday: "Chanukah",
+          daysToUpcomingHoliday: 17,
+          hebrewDate: "5786-09-08",
+        },
+      });
+      dataLayer.push({
+        articleHierarchy: "-1937868-2429517-4976746-7093881-",
+        keywords: "-k2898-k2170-k20429-k22262-k2185-",
+        k: "-1937868-2429517-4976746-7093881--k2898-k2170-k20429-k22262-k2185-",
+      });
     </script>
     <script>
-      (function(c,h,a,b,a,d){c[a]=c[a]||[];c[a].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=h.getElementsByTagName(b)[0],
-      j=h.createElement(b);j.async=true;
-      j.src='https://w6.chabad.org/mitzvah-tank.js';f.parentNode.insertBefore(j,f);
-      })(window,document,0,'script','dataLayer');
+      (function (c, h, a, b, a, d) {
+        c[a] = c[a] || [];
+        c[a].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = h.getElementsByTagName(b)[0],
+          j = h.createElement(b);
+        j.async = true;
+        j.src = "https://w6.chabad.org/mitzvah-tank.js";
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 0, "script", "dataLayer");
     </script>
     <script
       type="text/javascript"
@@ -248,24 +321,25 @@
 
     <script>
       function ready(fn) {
-        if (document.readyState !== 'loading'){
+        if (document.readyState !== "loading") {
           fn();
         } else {
-          document.addEventListener('DOMContentLoaded', fn);
+          document.addEventListener("DOMContentLoaded", fn);
         }
       }
       function addClass() {
         var path = window.location.pathname;
         var matches = path && path.match(/eventid\/(\d+)/);
-        if (path.includes('ArticleCcoResponse')) document.body.classList.add('form-auto-response');
+        if (path.includes("ArticleCcoResponse"))
+          document.body.classList.add("form-auto-response");
         var aid = Co && Co.ArticleId;
         if (matches && matches.length > 1) {
-          var eventClass = 'eventid-' + matches[1];
+          var eventClass = "eventid-" + matches[1];
           document.body.classList.add(eventClass);
         } else {
-          document.body.classList.add('aid-' + aid);
+          document.body.classList.add("aid-" + aid);
         }
-      };
+      }
       ready(addClass);
     </script>
     <script src="js/page_rules.js"></script>
@@ -281,15 +355,15 @@
         matchMultiplier: 2,
         processingFee: 3,
         links: {
-          campaignHome: 'index.html',
-          donate: 'index.donate.html',
-          partners: 'index.partners.html',
+          campaignHome: "index.html",
+          donate: "index.donate.html",
+          partners: "index.partners.html",
         },
         layout: {
-          oneColumn: false
-        }
-      }
-      
+          oneColumn: false,
+        },
+      };
+
       var Co = Co || {};
       Co.Fundraising = Co.Fundraising || {};
       // pass mosadId and campaginArticleId to client
@@ -299,7 +373,7 @@
       Co.Fundraising.CampaignId = 4487;
       Co.Fundraising.OneColumn = false;
     </script>
-    <div class="fs-root fs-pre-campaign ">
+    <div class="fs-root fs-pre-campaign">
       <div class="fs-container">
         <!-- AddToAny Config Vars -->
         <script type="text/javascript">
@@ -308,11 +382,34 @@
             lang: "en",
           };
           var addtoany_share = {
-            title: "I donated to the LIGHT THE DARKNESS campaign. Would you join too?",
-            description: "I just contributed to Chabad Jewish Centre of Windsor&#39;s LIGHT THE DARKNESS campaign because this is an important cause. I would greatly appreciate it if you would, too. How about it? Thanks!"
+            title:
+              "I donated to the LIGHT THE DARKNESS campaign. Would you join too?",
+            description:
+              "I just contributed to Chabad Jewish Centre of Windsor&#39;s LIGHT THE DARKNESS campaign because this is an important cause. I would greatly appreciate it if you would, too. How about it? Thanks!",
           };
-          
-          InitialDonors = {"Donors":[{"Id":650883,"Date":"2025-11-16T18:45:38Z","DateString":"11/16/2025 18:45:38 GMT-05:00","Title":"","FirstName":"","LastName":"","Name":"Anonymous","Dedication":"in honor of Mendel","Quantity":0,"TeamId":0,"ActualAmount":400.0,"EffectiveAmount":800.0,"EffectiveAmountFormatted":"800","IsAnonymous":true}],"Teams":[],"Campaign":{"CurrencySymbol":"$"}};
+
+          InitialDonors = {
+            Donors: [
+              {
+                Id: 650883,
+                Date: "2025-11-16T18:45:38Z",
+                DateString: "11/16/2025 18:45:38 GMT-05:00",
+                Title: "",
+                FirstName: "",
+                LastName: "",
+                Name: "Anonymous",
+                Dedication: "in honor of Mendel",
+                Quantity: 0,
+                TeamId: 0,
+                ActualAmount: 400.0,
+                EffectiveAmount: 800.0,
+                EffectiveAmountFormatted: "800",
+                IsAnonymous: true,
+              },
+            ],
+            Teams: [],
+            Campaign: { CurrencySymbol: "$" },
+          };
         </script>
 
         <div
@@ -329,7 +426,7 @@
                 </div>
               </div>
               <div class="fs-top-tools col-md-6 text-right">
-                  <div class="fs-top-tools-buttons">
+                <div class="fs-top-tools-buttons">
                   <script>
                     var a2a_config = a2a_config || {};
                     a2a_config.icon_color = "#666";
@@ -344,29 +441,15 @@
                       target="_blank"
                       rel="nofollow noopener"
                       href="/#facebook"
-                      ><span
-                        class="a2a_svg a2a_s__default a2a_s_facebook"
-                        style="
-                          background-color: #f37743;
-                          width: 40px;
-                          line-height: 40px;
-                          height: 40px;
-                          background-size: 40px;
-                        "
-                        ><svg
-                          focusable="false"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 32 32"
-                        >
-                          <path
-                            fill="#fff"
-                            d="M28 16c0-6.627-5.373-12-12-12S4 9.373 4 16c0 5.628 3.875 10.35 9.101 11.647v-7.98h-2.474V16H13.1v-1.58c0-4.085 1.849-5.978 5.859-5.978.76 0 2.072.15 2.608.298v3.325c-.283-.03-.775-.045-1.386-.045-1.967 0-2.728.745-2.728 2.683V16h3.92l-.673 3.667h-3.247v8.245C23.395 27.195 28 22.135 28 16"
-                          ></path></svg></span
-                      ><span class="a2a_label">Facebook</span></a
+                      ><img
+                        src="image/fb.png"
+                        alt="Facebook"
+                        style="width: 40px; height: 40px; display: inline-block"
+                      /><span class="a2a_label">Facebook</span></a
                     >
                     <div style="clear: both"></div>
                   </div>
+
                   <a
                     href="/templates/fundraising/default.asp?aid=7093881&amp;jewish=Campaign.htm&amp;donate=true"
                     class="btn fs-btn js-action-open-donate fs-donatable"
@@ -617,7 +700,10 @@
                       >$<span id="totalAmount">0</span></span
                     >
                   </div>
-                  <button type="button" class="donate-now-btn js-action-open-donate">
+                  <button
+                    type="button"
+                    class="donate-now-btn js-action-open-donate"
+                  >
                     <span class="donate-text">DONATE NOW</span>
                     <span class="donate-arrow">></span>
                   </button>
@@ -626,141 +712,35 @@
             </div>
           </div>
         </div>
-
-        <div class="container fs-about-partners-container">
-          <div class="row">
-            <div class="col-md-12 fs-about js-about fs-about-main-body">
-              <div class="row no-gutters">
-                <div class="col-md-6 fs-about-images">
-                  <div class="fs-image-big fs-about-image">
-                    <div class="fs-image-wrap">
-                      <img src="image/7.jpg" />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-5 fs-about-text js-about-text">
-                  <h5 id="about-heading">About</h5>
-                  <h3>Fuel The Flame That Illuminates Windsor/Essex</h3>
-
-                  <div class="fs-accordion-item">
-                    <h4 class="fs-accordion-header js-accordion-header">
-                      What is Chabad of Windsor?
-                      <img
-                        src="image/greater.png"
-                        class="fs-accordion-icon"
-                        alt=""
-                      />
-                    </h4>
-                    <div
-                      class="fs-accordion-content js-accordion-content active"
-                    >
-                      <p>
-                        It is events - like our community holiday
-                        events,&nbsp;Students events, which gather hundreds of
-                        people - and small events, like Torah classes and one on
-                        one counseling. It is high profile - like our public
-                        menorah lightings, covered in the media and attended by
-                        Jews and non-Jews, and low profile - like the work we do
-                        that you will never read about. It is building
-                        relationships with other leaders in our community and
-                        advocating for our community, and it is reaching out to
-                        every single Jew, regardless of their level of
-                        observance, socioeconomic status, or anything else. It
-                        is ALL about shining&nbsp;a powerful light amidst some
-                        awful darkness.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="fs-accordion-item">
-                    <h4 class="fs-accordion-header js-accordion-header">
-                      How does a Matching Campaign work?
-                      <img
-                        src="image/less.png"
-                        class="fs-accordion-icon"
-                        alt=""
-                      />
-                    </h4>
-                    <div class="fs-accordion-content js-accordion-content">
-                      <p>
-                        Running Chabad of Windsor requires a major investment of
-                        time, energy, and capital. While our Rabbi and Rebbetzin
-                        work tirelessly to ensure that no Jew is left behind,
-                        the day-to-day expenses of operating a Chabad Centre can
-                        be daunting. Rather than charging membership fees or
-                        exorbitant event prices, which could alienate some
-                        people, we rely on the generosity of the community that
-                        we serve. To that end, a few generous donors have come
-                        forward with a proposal to help Chabad thrive this year.
-                        They will collectively donate $60,000 to our centre,
-                        provided that it is matched by an equal donation from
-                        you, our community. For the next 36 hours&nbsp;only,
-                        your dollar will have TWO TIMES times the impact!
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="fs-accordion-item">
-                    <h4 class="fs-accordion-header js-accordion-header">
-                      How can I help?
-                      <img
-                        src="image/less.png"
-                        class="fs-accordion-icon"
-                        alt=""
-                      />
-                    </h4>
-                    <div class="fs-accordion-content js-accordion-content">
-                      <p>
-                        You can be a partner in everything we do to benefit the
-                        residents and students of Widnsor by contributing to our
-                        campaign, and by spreading the word to anyone else who
-                        would be interested in supporting this community.
-                        Maimonides says that every good deed, no matter how
-                        small, tips the scale of humanity toward goodness. Today
-                        you have the opportunity to see the impact of that deed
-                        multiplied many times over. Join us by making a donation
-                        today!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="modal fade about-modal" id="about_modal">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">×</span>
-                    </button>
-                    <h5 class="modal-title" id="aboutModalLabel">
-                      About Campaign
-                    </h5>
-                  </div>
-                  <div class="modal-body">
-                    <div class="fs-about js-about p-0">
-                      <div class="mb-20">
-                        <img
-                          src="https://w2.chabad.org/media/images/1299/PMex12990461.png"
-                          class="center-block modal-image"
-                          alt="Campaign Image"
-                        />
+        <div class="container-fluid" style="background-color: #f6f6f6;">
+          <div class="container fs-about-partners-container">
+            <div class="row">
+              <div class="col-md-12 fs-about js-about fs-about-main-body">
+                <div class="row no-gutters">
+                  <div class="col-md-6 fs-about-images">
+                    <div class="fs-image-big fs-about-image">
+                      <div class="fs-image-wrap">
+                        <img id="about-carousel-image" src="image/about/1.jpg" />
                       </div>
+                      <div class="fs-carousel-dots" id="about-carousel-dots"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-5 fs-about-text js-about-text">
+                    <h5 id="about-heading">About</h5>
+                    <h3>Fuel The Flame That Illuminates Windsor/Essex</h3>
 
+                    <div class="fs-accordion-item">
+                      <h4 class="fs-accordion-header js-accordion-header">
+                        What is Chabad of Windsor?
+                        <img
+                          src="image/greater.png"
+                          class="fs-accordion-icon"
+                          alt=""
+                        />
+                      </h4>
                       <div
-                      style="padding: 0 !important;"
-                        class="fs-about-text js-about-text js-show-all --show-all"
+                        class="fs-accordion-content js-accordion-content active"
                       >
-                        <h3>Fuel The Flame That Illuminates Windsor/Essex</h3>
-
-                        <h4>What is Chabad of Windsor?</h4>
-
                         <p>
                           It is events - like our community holiday
                           events,&nbsp;Students events, which gather hundreds of
@@ -776,9 +756,19 @@
                           else. It is ALL about shining&nbsp;a powerful light
                           amidst some awful darkness.
                         </p>
+                      </div>
+                    </div>
 
-                        <h4>How does a Matching Campaign work?</h4>
-
+                    <div class="fs-accordion-item">
+                      <h4 class="fs-accordion-header js-accordion-header">
+                        How does a Matching Campaign work?
+                        <img
+                          src="image/less.png"
+                          class="fs-accordion-icon"
+                          alt=""
+                        />
+                      </h4>
+                      <div class="fs-accordion-content js-accordion-content">
                         <p>
                           Running Chabad of Windsor requires a major investment
                           of time, energy, and capital. While our Rabbi and
@@ -795,9 +785,19 @@
                           For the next 36 hours&nbsp;only, your dollar will have
                           TWO TIMES times the impact!
                         </p>
+                      </div>
+                    </div>
 
-                        <h4>How can I help?</h4>
-
+                    <div class="fs-accordion-item">
+                      <h4 class="fs-accordion-header js-accordion-header">
+                        How can I help?
+                        <img
+                          src="image/less.png"
+                          class="fs-accordion-icon"
+                          alt=""
+                        />
+                      </h4>
+                      <div class="fs-accordion-content js-accordion-content">
                         <p>
                           You can be a partner in everything we do to benefit
                           the residents and students of Widnsor by contributing
@@ -814,30 +814,134 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- END CACHE -->
+              <div class="modal fade about-modal" id="about_modal">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">×</span>
+                      </button>
+                      <h5 class="modal-title" id="aboutModalLabel">
+                        About Campaign
+                      </h5>
+                    </div>
+                    <div class="modal-body">
+                      <div class="fs-about js-about p-0">
+                        <div class="mb-20">
+                          <img
+                            src="https://w2.chabad.org/media/images/1299/PMex12990461.png"
+                            class="center-block modal-image"
+                            alt="Campaign Image"
+                          />
+                        </div>
+
+                        <div
+                          style="padding: 0 !important"
+                          class="fs-about-text js-about-text js-show-all --show-all"
+                        >
+                          <h3>Fuel The Flame That Illuminates Windsor/Essex</h3>
+
+                          <h4>What is Chabad of Windsor?</h4>
+
+                          <p>
+                            It is events - like our community holiday
+                            events,&nbsp;Students events, which gather hundreds
+                            of people - and small events, like Torah classes and
+                            one on one counseling. It is high profile - like our
+                            public menorah lightings, covered in the media and
+                            attended by Jews and non-Jews, and low profile -
+                            like the work we do that you will never read about.
+                            It is building relationships with other leaders in
+                            our community and advocating for our community, and
+                            it is reaching out to every single Jew, regardless
+                            of their level of observance, socioeconomic status,
+                            or anything else. It is ALL about shining&nbsp;a
+                            powerful light amidst some awful darkness.
+                          </p>
+
+                          <h4>How does a Matching Campaign work?</h4>
+
+                          <p>
+                            Running Chabad of Windsor requires a major
+                            investment of time, energy, and capital. While our
+                            Rabbi and Rebbetzin work tirelessly to ensure that
+                            no Jew is left behind, the day-to-day expenses of
+                            operating a Chabad Centre can be daunting. Rather
+                            than charging membership fees or exorbitant event
+                            prices, which could alienate some people, we rely on
+                            the generosity of the community that we serve. To
+                            that end, a few generous donors have come forward
+                            with a proposal to help Chabad thrive this year.
+                            They will collectively donate $60,000 to our centre,
+                            provided that it is matched by an equal donation
+                            from you, our community. For the next 36
+                            hours&nbsp;only, your dollar will have TWO TIMES
+                            times the impact!
+                          </p>
+
+                          <h4>How can I help?</h4>
+
+                          <p>
+                            You can be a partner in everything we do to benefit
+                            the residents and students of Widnsor by
+                            contributing to our campaign, and by spreading the
+                            word to anyone else who would be interested in
+                            supporting this community. Maimonides says that
+                            every good deed, no matter how small, tips the scale
+                            of humanity toward goodness. Today you have the
+                            opportunity to see the impact of that deed
+                            multiplied many times over. Join us by making a
+                            donation today!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- END CACHE -->
+            </div>
           </div>
         </div>
 
-        <script id="js-partners-list-template" type="text/x-handlebars-template">
-{{#each Partners}}
-<div class="fs-partner-container {{iif (gt @index 17) 'fs-extra-partner'}}">
-<div class="fs-partner">
-<div class="fs-partner-name">{{Name}}</div>
-<div class="fs-partner-donation-amount">${{EffectiveAmountFormatted}}</div>
-{{#if Dedication}}
-<div class='fs-partner-dedication'>{{Dedication}}</div>
-{{/if}}
-<div class="fs-bottom-triangle">
-<svg version="1.1" viewBox="0 0 1 1" preserveAspectRatio="none" class="svg-content">
-<polygon points="0.5 1, 0 0, 1 0" fill="#9FD3E7"></polygon>
-</svg>
-</div>
-</div>
-</div>
-{{/each}}
-</script>
+        <script
+          id="js-partners-list-template"
+          type="text/x-handlebars-template"
+        >
+          {{#each Partners}}
+            <div
+              class="fs-partner-container
+                {{iif (gt @index 17) 'fs-extra-partner'}}"
+            >
+              <div class="fs-partner">
+                <div class="fs-partner-name">{{Name}}</div>
+                <div
+                  class="fs-partner-donation-amount"
+                >${{EffectiveAmountFormatted}}</div>
+                {{#if Dedication}}
+                  <div class="fs-partner-dedication">{{Dedication}}</div>
+                {{/if}}
+                <div class="fs-bottom-triangle">
+                  <svg
+                    version="1.1"
+                    viewBox="0 0 1 1"
+                    preserveAspectRatio="none"
+                    class="svg-content"
+                  >
+                    <polygon points="0.5 1, 0 0, 1 0" fill="#9FD3E7"></polygon>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </script>
 
         <!-- Donor List Section -->
         <div class="container-fluid fs-donor-section">
@@ -849,11 +953,15 @@
                   <div class="donor-count-badge">
                     <span>3 DONOR</span>
                   </div>
-               
+
                   <div class="donor-sort-container">
                     <div class="donor-search-container">
                       <div class="donor-search-box">
-                        <img src="image/search-icon.png" alt="Search" class="search-icon" />
+                        <img
+                          src="image/search-icon.png"
+                          alt="Search"
+                          class="search-icon"
+                        />
                         <input
                           type="text"
                           class="donor-search-input"
@@ -869,7 +977,7 @@
                       <option>Date (Oldest)</option>
                     </select>
                   </div>
-                  
+
                   <div class="donor-about-mobile">
                     <span>About</span>
                   </div>
@@ -878,8 +986,8 @@
             </div>
 
             <!-- Donor Cards Section -->
-             <br>
-             <br>
+            <br />
+            <br />
             <div class="donor-cards-row">
               <div class="donor-card">
                 <div class="donor-amount-badge">$800</div>
@@ -916,9 +1024,6 @@
             </div>
           </div>
         </div>
-
-        
-
 
         <div class="container-fluid fs-footer">
           <div class="container">
@@ -974,7 +1079,9 @@
                       class="glyphicon glyphicon-remove"
                       aria-hidden="true"
                     ></span
-                    ><span class="close-icon-text" style="display: none;">×</span>
+                    ><span class="close-icon-text" style="display: none"
+                      >×</span
+                    >
                   </a>
                 </div>
               </div>
@@ -1772,10 +1879,14 @@
                 </div>
                 <donation-summary processingfeeratio="0.03"> </donation-summary>
 
-                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                <script
+                  data-cfasync="false"
+                  src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+                ></script>
                 <script>
                   var recaptchaIsEnterprise = false;
-                  var recaptchaV2Key = "6LcG_TcUAAAAAKAVgwgW39ujc9OCjXSoQYFIA-Su";
+                  var recaptchaV2Key =
+                    "6LcG_TcUAAAAAKAVgwgW39ujc9OCjXSoQYFIA-Su";
                 </script>
                 <input
                   type="hidden"
@@ -1846,26 +1957,11 @@
                     target="_blank"
                     rel="nofollow noopener"
                     href="/#facebook"
-                    ><span
-                      class="a2a_svg a2a_s__default a2a_s_facebook"
-                      style="
-                        background-color: rgb(102, 102, 102);
-                        width: 30px;
-                        line-height: 30px;
-                        height: 30px;
-                        background-size: 30px;
-                      "
-                      ><svg
-                        focusable="false"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          fill="#fff"
-                          d="M28 16c0-6.627-5.373-12-12-12S4 9.373 4 16c0 5.628 3.875 10.35 9.101 11.647v-7.98h-2.474V16H13.1v-1.58c0-4.085 1.849-5.978 5.859-5.978.76 0 2.072.15 2.608.298v3.325c-.283-.03-.775-.045-1.386-.045-1.967 0-2.728.745-2.728 2.683V16h3.92l-.673 3.667h-3.247v8.245C23.395 27.195 28 22.135 28 16"
-                        ></path></svg></span
-                    ><span class="a2a_label">Facebook</span></a
+                    ><img
+                      src="image/fb.png"
+                      alt="Facebook"
+                      style="width: 30px; height: 30px; display: inline-block"
+                    /><span class="a2a_label">Facebook</span></a
                   >
                   <a
                     class="a2a_button_twitter"
@@ -2178,18 +2274,32 @@
       </div>
     </div>
     <script type="text/javascript" src="js/fundraising.js_v_8cea483b"></script>
-    <script>$j = $j.fn ? $j : jQuery;$j(()=>{$q.forEach(f=>{try{f.call(window);}catch(ex){console.error(ex);}});})</script>
+    <script>
+      $j = $j.fn ? $j : jQuery;
+      $j(() => {
+        $q.forEach((f) => {
+          try {
+            f.call(window);
+          } catch (ex) {
+            console.error(ex);
+          }
+        });
+      });
+    </script>
     <script language="javascript" type="text/javascript">
-      Co.Settings = {CacheClassName:'js-cache-default',MosadName:'Chabad Jewish Centre'};
-      Co.ArticleId = '7093881';
+      Co.Settings = {
+        CacheClassName: "js-cache-default",
+        MosadName: "Chabad Jewish Centre",
+      };
+      Co.ArticleId = "7093881";
       Co.SectionId = 2429517;
       Co.PartnerSiteId = 0;
       Co.SiteId = 9265;
       Co.IsMobilePage = false;
       Co.IsResponsive = false;
-      Co.DbDomain = 'WindsorChabad.com';
-      Co.LanguageCode = 'en-US';
-      Co.LoginStatus = 'None';
+      Co.DbDomain = "WindsorChabad.com";
+      Co.LanguageCode = "en-US";
+      Co.LoginStatus = "None";
     </script>
 
     <div
@@ -2276,11 +2386,11 @@
           // Wait for DOM and other scripts to be ready
           function initDonateForm() {
             try {
-              const donateForm = document.querySelector('.js-donate-form');
-              const thankYouSection = document.querySelector('.fs-thank-you');
+              const donateForm = document.querySelector(".js-donate-form");
+              const thankYouSection = document.querySelector(".fs-thank-you");
 
               if (!donateForm) {
-                console.warn('Donate form not found');
+                console.warn("Donate form not found");
                 return;
               }
 
@@ -2292,14 +2402,14 @@
                     e.stopPropagation();
                   }
                   // Use original CSS class method - add class to body
-                  document.body.classList.add('fs-open-donate-form');
+                  document.body.classList.add("fs-open-donate-form");
                   // Prevent body scroll when modal is open
-                  document.body.style.overflow = 'hidden';
+                  document.body.style.overflow = "hidden";
                   if (thankYouSection) {
-                    thankYouSection.style.display = 'none';
+                    thankYouSection.style.display = "none";
                   }
                 } catch (err) {
-                  console.error('Error showing donate form:', err);
+                  console.error("Error showing donate form:", err);
                 }
               }
 
@@ -2311,43 +2421,59 @@
                     e.stopPropagation();
                   }
                   // Remove class from body to hide modal (original method)
-                  document.body.classList.remove('fs-open-donate-form');
+                  document.body.classList.remove("fs-open-donate-form");
                   // Restore body scroll
-                  document.body.style.overflow = '';
+                  document.body.style.overflow = "";
                 } catch (err) {
-                  console.error('Error hiding donate form:', err);
+                  console.error("Error hiding donate form:", err);
                 }
               }
 
               // Use event delegation on document to avoid conflicts
-              document.addEventListener('click', function(e) {
-                try {
-                  // Check if clicked element or its parent has the class
-                  var target = e.target;
-                  while (target && target !== document.body) {
-                    // Only handle donate buttons, not modal triggers
-                    if (target.classList && target.classList.contains('js-action-open-donate')) {
-                      // Make sure it's not inside a modal trigger
-                      if (!target.closest('[data-toggle="modal"]') && !target.closest('.about-modal-btn')) {
-                        showDonateForm(e);
+              document.addEventListener(
+                "click",
+                function (e) {
+                  try {
+                    // Check if clicked element or its parent has the class
+                    var target = e.target;
+                    while (target && target !== document.body) {
+                      // Only handle donate buttons, not modal triggers
+                      if (
+                        target.classList &&
+                        target.classList.contains("js-action-open-donate")
+                      ) {
+                        // Make sure it's not inside a modal trigger
+                        if (
+                          !target.closest('[data-toggle="modal"]') &&
+                          !target.closest(".about-modal-btn")
+                        ) {
+                          showDonateForm(e);
+                          return;
+                        }
+                      }
+                      if (
+                        target.classList &&
+                        target.classList.contains("js-action-close-donate")
+                      ) {
+                        hideDonateForm(e);
                         return;
                       }
+                      target = target.parentElement;
                     }
-                    if (target.classList && target.classList.contains('js-action-close-donate')) {
-                      hideDonateForm(e);
-                      return;
-                    }
-                    target = target.parentElement;
+                  } catch (err) {
+                    // Silently ignore errors from browser extensions
                   }
-                } catch (err) {
-                  // Silently ignore errors from browser extensions
-                }
-              }, true); // Use capture phase
+                },
+                true
+              ); // Use capture phase
 
               // Close on escape key
-              document.addEventListener('keydown', function(e) {
+              document.addEventListener("keydown", function (e) {
                 try {
-                  if (e.key === 'Escape' && document.body.classList.contains('fs-open-donate-form')) {
+                  if (
+                    e.key === "Escape" &&
+                    document.body.classList.contains("fs-open-donate-form")
+                  ) {
                     hideDonateForm(e);
                   }
                 } catch (err) {
@@ -2358,11 +2484,15 @@
               // Close on click outside the form (on the overlay/background)
               // The overlay is created by CSS :before pseudo-element on fs-full-donate-form
               if (donateForm) {
-                donateForm.addEventListener('click', function(e) {
+                donateForm.addEventListener("click", function (e) {
                   try {
                     // Check if click is on the form container itself (overlay) and not on inner content
-                    var formInner = donateForm.querySelector('.fs-donate-inner');
-                    if (e.target === donateForm || (formInner && !formInner.contains(e.target))) {
+                    var formInner =
+                      donateForm.querySelector(".fs-donate-inner");
+                    if (
+                      e.target === donateForm ||
+                      (formInner && !formInner.contains(e.target))
+                    ) {
                       hideDonateForm(e);
                     }
                   } catch (err) {
@@ -2371,20 +2501,20 @@
                 });
               }
             } catch (error) {
-              console.error('Error initializing donate form:', error);
+              console.error("Error initializing donate form:", error);
             }
           }
 
           // Initialize after a short delay to let other scripts load
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", function () {
               setTimeout(initDonateForm, 300);
             });
           } else {
             setTimeout(initDonateForm, 300);
           }
         } catch (error) {
-          console.error('Error setting up donate form handler:', error);
+          console.error("Error setting up donate form handler:", error);
         }
 
         // About Campaign Modal Functionality
@@ -2392,123 +2522,198 @@
         try {
           function initAboutModal() {
             try {
-              var aboutModalBtn = document.querySelector('.about-modal-btn');
-              var aboutModal = document.getElementById('about_modal');
-              
+              var aboutModalBtn = document.querySelector(".about-modal-btn");
+              var aboutModal = document.getElementById("about_modal");
+
               if (aboutModalBtn && aboutModal) {
                 // Prevent event bubbling to avoid conflicts
-                aboutModalBtn.addEventListener('click', function(e) {
-                  try {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-                    
-                    // If Bootstrap/jQuery is available, use it
-                    if (typeof jQuery !== 'undefined' && jQuery.fn.modal) {
-                      jQuery(aboutModal).modal('show');
-                    } else {
-                      // Fallback: manually show modal
-                      aboutModal.style.display = 'block';
-                      aboutModal.classList.add('show');
-                      aboutModal.classList.add('in');
-                      document.body.classList.add('modal-open');
-                      document.body.style.overflow = 'hidden';
-                      document.body.style.paddingRight = '15px';
-                      
-                      // Remove existing backdrop if any
-                      var existingBackdrop = document.getElementById('about-modal-backdrop');
-                      if (existingBackdrop) {
-                        existingBackdrop.remove();
-                      }
-                      
-                      // Create backdrop
-                      var backdrop = document.createElement('div');
-                      backdrop.className = 'modal-backdrop fade in';
-                      backdrop.id = 'about-modal-backdrop';
-                      backdrop.style.zIndex = '1040';
-                      document.body.appendChild(backdrop);
-                      
-                      // Set modal z-index
-                      aboutModal.style.zIndex = '1050';
-                      
-                      // Close handlers - only add once
-                      if (!aboutModal.dataset.handlersAdded) {
-                        aboutModal.dataset.handlersAdded = 'true';
-                        
-                        // Close button
-                        var closeBtn = aboutModal.querySelector('[data-dismiss="modal"]');
-                        if (closeBtn) {
-                          closeBtn.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            closeAboutModal();
-                          });
+                aboutModalBtn.addEventListener(
+                  "click",
+                  function (e) {
+                    try {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      e.stopImmediatePropagation();
+
+                      // If Bootstrap/jQuery is available, use it
+                      if (typeof jQuery !== "undefined" && jQuery.fn.modal) {
+                        jQuery(aboutModal).modal("show");
+                      } else {
+                        // Fallback: manually show modal
+                        aboutModal.style.display = "block";
+                        aboutModal.classList.add("show");
+                        aboutModal.classList.add("in");
+                        document.body.classList.add("modal-open");
+                        document.body.style.overflow = "hidden";
+                        document.body.style.paddingRight = "15px";
+
+                        // Remove existing backdrop if any
+                        var existingBackdrop = document.getElementById(
+                          "about-modal-backdrop"
+                        );
+                        if (existingBackdrop) {
+                          existingBackdrop.remove();
                         }
-                        
-                        // Close on backdrop click
-                        backdrop.addEventListener('click', function(e) {
-                          if (e.target === backdrop) {
-                            closeAboutModal();
+
+                        // Create backdrop
+                        var backdrop = document.createElement("div");
+                        backdrop.className = "modal-backdrop fade in";
+                        backdrop.id = "about-modal-backdrop";
+                        backdrop.style.zIndex = "1040";
+                        document.body.appendChild(backdrop);
+
+                        // Set modal z-index
+                        aboutModal.style.zIndex = "1050";
+
+                        // Close handlers - only add once
+                        if (!aboutModal.dataset.handlersAdded) {
+                          aboutModal.dataset.handlersAdded = "true";
+
+                          // Close button
+                          var closeBtn = aboutModal.querySelector(
+                            '[data-dismiss="modal"]'
+                          );
+                          if (closeBtn) {
+                            closeBtn.addEventListener("click", function (e) {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              closeAboutModal();
+                            });
                           }
-                        });
-                        
-                        // Close on ESC key
-                        var escHandler = function(e) {
-                          if (e.key === 'Escape' && aboutModal.classList.contains('show')) {
-                            closeAboutModal();
-                            document.removeEventListener('keydown', escHandler);
-                          }
-                        };
-                        document.addEventListener('keydown', escHandler);
+
+                          // Close on backdrop click
+                          backdrop.addEventListener("click", function (e) {
+                            if (e.target === backdrop) {
+                              closeAboutModal();
+                            }
+                          });
+
+                          // Close on ESC key
+                          var escHandler = function (e) {
+                            if (
+                              e.key === "Escape" &&
+                              aboutModal.classList.contains("show")
+                            ) {
+                              closeAboutModal();
+                              document.removeEventListener(
+                                "keydown",
+                                escHandler
+                              );
+                            }
+                          };
+                          document.addEventListener("keydown", escHandler);
+                        }
                       }
+                    } catch (err) {
+                      console.error("Error opening about modal:", err);
                     }
-                  } catch (err) {
-                    console.error('Error opening about modal:', err);
-                  }
-                }, true); // Use capture phase to run before other handlers
+                  },
+                  true
+                ); // Use capture phase to run before other handlers
               }
-              
+
               // Close function
               function closeAboutModal() {
                 try {
-                  if (typeof jQuery !== 'undefined' && jQuery.fn.modal) {
-                    jQuery(aboutModal).modal('hide');
+                  if (typeof jQuery !== "undefined" && jQuery.fn.modal) {
+                    jQuery(aboutModal).modal("hide");
                   } else {
-                    aboutModal.style.display = 'none';
-                    aboutModal.classList.remove('show');
-                    aboutModal.classList.remove('in');
-                    document.body.classList.remove('modal-open');
-                    document.body.style.overflow = '';
-                    document.body.style.paddingRight = '';
-                    var backdrop = document.getElementById('about-modal-backdrop');
+                    aboutModal.style.display = "none";
+                    aboutModal.classList.remove("show");
+                    aboutModal.classList.remove("in");
+                    document.body.classList.remove("modal-open");
+                    document.body.style.overflow = "";
+                    document.body.style.paddingRight = "";
+                    var backdrop = document.getElementById(
+                      "about-modal-backdrop"
+                    );
                     if (backdrop) {
                       backdrop.remove();
                     }
                   }
                 } catch (err) {
-                  console.error('Error closing about modal:', err);
+                  console.error("Error closing about modal:", err);
                 }
               }
-              
+
               // Make close function globally available
               window.closeAboutModal = closeAboutModal;
             } catch (error) {
-              console.error('Error initializing about modal:', error);
+              console.error("Error initializing about modal:", error);
             }
           }
 
           // Initialize about modal after DOM is ready
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", function () {
               setTimeout(initAboutModal, 500);
             });
           } else {
             setTimeout(initAboutModal, 500);
           }
         } catch (error) {
-          console.error('Error setting up about modal handler:', error);
+          console.error("Error setting up about modal handler:", error);
         }
       });
+
+      // About Image Carousel
+      (function() {
+        const images = [
+          'image/about/1.jpg',
+          'image/about/2.jpg',
+          'image/about/3.jpg',
+          'image/about/4.jpg',
+          'image/about/5.jpg',
+          'image/about/6.jpg',
+          'image/about/7.jpg',
+          'image/about/8.jpg',
+          'image/about/9.jpg',
+          'image/about/11.jpg',
+          'image/about/12.jpg',
+          'image/about/13.jpg'
+        ];
+        
+        let currentIndex = 0;
+        const imageElement = document.getElementById('about-carousel-image');
+        const dotsContainer = document.getElementById('about-carousel-dots');
+        
+        if (imageElement && dotsContainer) {
+          // Create dots
+          images.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = 'fs-carousel-dot';
+            if (index === 0) {
+              dot.classList.add('active');
+            }
+            dot.addEventListener('click', () => {
+              currentIndex = index;
+              updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+          });
+          
+          // Function to update carousel
+          function updateCarousel() {
+            imageElement.src = images[currentIndex];
+            
+            // Update dots
+            const dots = dotsContainer.querySelectorAll('.fs-carousel-dot');
+            dots.forEach((dot, index) => {
+              if (index === currentIndex) {
+                dot.classList.add('active');
+              } else {
+                dot.classList.remove('active');
+              }
+            });
+          }
+          
+          // Auto-rotate images every 2 seconds
+          setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+          }, 2000);
+        }
+      })();
     </script>
   </body>
 </html>
