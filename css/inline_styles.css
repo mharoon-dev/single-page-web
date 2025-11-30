@@ -1,4 +1,8 @@
 
+body,html {
+  overflow-x: hidden !important;
+}
+
 .mendel {
 text-align: center;
 border: 0;
