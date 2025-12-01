@@ -3556,7 +3556,7 @@ body {
     font-size: 15px !important;
   }
   .fs-countdowndonate {
-    width: 90%;
+    /* width: 90%; */
     padding: 0 !important;
   }
   #goalAreaMobileView {
