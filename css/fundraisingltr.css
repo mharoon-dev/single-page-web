@@ -20,7 +20,7 @@
 .fs-goal .fs-goal-graph-container .fs-goal-graph-text,
 .fs-header .page-header h1,
 .fs-header .page-header h1 small {
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
 }
 @font-face {
   font-family: Raleway;
@@ -624,7 +624,7 @@
   margin-top: 30px;
 }
 .fs-matchers .fs-matcher .fs-matcher-subtitle {
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
   font-size: 0.9em;
 }
 .fs-matchers .fs-matcher .fs-matcher-image {
