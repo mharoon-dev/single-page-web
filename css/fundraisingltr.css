@@ -3270,7 +3270,7 @@ body {
   float: right;
   margin-top: 93px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   color: #f37743 !important;
 }
 .fs-goal-graph-container .fs-goal-graph-star-container .glyphicon {
@@ -3535,6 +3535,15 @@ body {
 }
 
 @media (max-width: 1025px) {
+  address > h3 {
+    font-size: 20px !important;
+  }
+  address{
+    font-size: 18px !important;
+  }
+  .fs-copyright {
+    font-size: 16px !important;
+  }
   .js-about-text {
     margin: 15px !important;
   }
@@ -3785,8 +3794,11 @@ body {
   margin-top: 20px !important;
 }
 
+address {
+  font-size: 20px !important;
+}
 address > h3 {
-  font-size: 20px;
+  font-size: 30px !important;
 }
 
 /* Donor List Section Styles */
@@ -4113,3 +4125,45 @@ address > h3 {
 .fs-matchers {
   border-bottom: none !important;
 }
+
+
+      .fs-carousel-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 15px;
+        padding: 10px 0;
+      }
+      
+      .fs-carousel-dot {
+        width: 7.7px;
+        height: 7.7px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      
+      .fs-carousel-dot:hover {
+        background-color: #999;
+      }
+      
+      .fs-carousel-dot.active {
+        background-color: #0066cc;
+        width: 14px;
+        height: 14px;
+      }
+      
+      .fs-image-wrap {
+        position: relative;
+      }
+      
+      #about-carousel-image {
+        width: 587;
+        height: 631px;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.3s ease;
+      }
