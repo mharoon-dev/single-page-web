@@ -677,7 +677,7 @@
 .donate-members .donates_user .team-up,
 .fs-countdown h3 strong,
 .fs-partners h3 {
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
 }
 @media (min-width: 576px) {
   .fs-matchers .fs-matcher {
@@ -1483,7 +1483,7 @@
   .fs-btn-close
   .glyphicon:empty:before {
   content: "×";
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif !important;
   font-size: 28px;
   font-weight: bold;
   line-height: 1;
@@ -2022,7 +2022,7 @@
 
 .fs-original-goal {
   color: #ef5422 !important;
-  font-family: sans-serif;
+  font-family: sans-serif !important;
   font-weight: 500;
 }
 #goalBtn,
@@ -2829,13 +2829,13 @@
   font-size: 18px;
   margin-top: 0;
   font-weight: 600;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
   margin-bottom: 15px;
 }
 .btns-flex .view-btn,
 .team-members .team-users .donor-team .D-amount {
   font-size: 14px;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
 }
 .team-members .team-users .donor-team .D-amount {
   margin-bottom: 20px;
@@ -2846,7 +2846,7 @@
   display: block;
   font-size: 18px;
   font-weight: 600;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
   color: #023768;
 }
 .progress-flex {
@@ -2868,11 +2868,11 @@
   text-align: right;
   color: #646464;
   font-size: 12px;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
 }
 .progress-flex .S-label span {
   font-weight: 600;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
   color: #023768;
 }
 .btns-flex .view-btn {
@@ -2928,7 +2928,7 @@
 .create-team {
   background-color: #023768;
   cursor: pointer;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
   color: #fff;
   font-size: 14px;
   padding: 11px 11px 13px;
@@ -2953,7 +2953,7 @@
   padding: 5px 0;
   border-bottom: 1px dotted;
   color: #555;
-  font-family: "Varela Round", sans-serif;
+  font-family: "Varela Round", sans-serif !important;
   border-radius: 0;
   box-shadow: none;
   background: 0 0;
@@ -2982,7 +2982,7 @@
   color: #023768;
   margin: 0;
   font-weight: 600;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
 }
 .team-sections .team-header {
   padding-bottom: 25px;
@@ -2990,7 +2990,7 @@
 .team-donor-detail .description {
   font-size: 16px;
   color: #000;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
   line-height: 1.4;
   margin-bottom: 5px;
 }
@@ -3158,7 +3158,7 @@ form:invalid #chariot {
 #fs-donate-form input,
 #fs-donate-form select,
 .fs-footer .fs-copyright {
-  font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif !important;
 }
 .chariot-wrapper .loading-wrapper:not(.active) {
   display: none;
@@ -3286,7 +3286,7 @@ body {
   width: 100%;
 }
 #fs-donate-form .form-control:is(#inputCCNumber, #inputCardCode) {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
 }
 .video-modal .modal-content {
   margin: 40px 70px;
@@ -4003,7 +4003,7 @@ address > h3 {
   white-space: nowrap;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+    "Helvetica Neue", Arial, sans-serif !important;
 }
 
 .donor-time {
@@ -4012,7 +4012,7 @@ address > h3 {
   white-space: nowrap;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+    "Helvetica Neue", Arial, sans-serif !important;
 }
 
 .donor-dedication {
@@ -4021,7 +4021,7 @@ address > h3 {
   margin: 12px 15px 0 15px;
   padding-top: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+    "Helvetica Neue", Arial, sans-serif !important;
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease, margin-top 0.3s ease;
